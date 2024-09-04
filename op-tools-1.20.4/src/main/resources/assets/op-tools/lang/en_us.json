@@ -1,5 +1,15 @@
 {
   "item.op-tools.diamondium_sword": "Diamondium Sword",
+  "item.op-tools.diamondium_pickaxe": "Diamondium Pickaxe",
+  "item.op-tools.diamondium_axe": "Diamondium Axe",
+  "item.op-tools.diamondium_shovel": "Diamondium Shovel",
+  "item.op-tools.diamondium_hoe": "Diamondium Hoe",
+
+  "item.op-tools.diamondillium_sword": "Diamondillium Sword",
+  "item.op-tools.diamondillium_pickaxe": "Diamondillium Pickaxe",
+  "item.op-tools.diamondillium_axe": "Diamondillium Axe",
+  "item.op-tools.diamondillium_shovel": "Diamondillium Shovel",
+  "item.op-tools.diamondillium_hoe": "Diamondillium Hoe",
 
   "itemGroup.op-tools": "OP Tools"
 }

@@ -53,11 +53,38 @@ public class ModTools {
             "diamondium_hoe"
     );
 
+    public static final Item DIAMONDILLIUM_SWORD = register(
+            new SwordItem(DiamondilliumToolsMaterial.INSTANCE, 10, 0.5f, new FabricItemSettings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_sword"
+    );
+    public static final Item DIAMONDILLIUM_PICKAXE = register(
+            new PickaxeItem(DiamondilliumToolsMaterial.INSTANCE, 5, 0.2f, new FabricItemSettings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_pickaxe"
+    );
+    public static final Item DIAMONDILLIUM_AXE = register(
+            new AxeItem(DiamondilliumToolsMaterial.INSTANCE, 15, 0.4f, new FabricItemSettings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_axe"
+    );
+    public static final Item DIAMONDILLIUM_SHOVEL = register(
+            new ShovelItem(DiamondilliumToolsMaterial.INSTANCE, 8, 0.5f, new FabricItemSettings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_shovel"
+    );
+    public static final Item DIAMONDILLIUM_HOE = register(
+            new PickaxeItem(DiamondilliumToolsMaterial.INSTANCE, 6, 1f, new FabricItemSettings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_hoe"
+    );
+
 
     public static void initialise(){
         Registry.register(Registries.ITEM_GROUP, OP_TOOLS_ITEM_GROUP_KEY, OP_TOOLS_ITEM_GROUP);
 
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(ModTools.DIAMONDILLIUM_SWORD);
+            itemGroup.add(ModTools.DIAMONDILLIUM_PICKAXE);
+            itemGroup.add(ModTools.DIAMONDILLIUM_AXE);
+            itemGroup.add(ModTools.DIAMONDILLIUM_SHOVEL);
+            itemGroup.add(ModTools.DIAMONDILLIUM_HOE);
+
             itemGroup.add(ModTools.DIAMONDIUM_SWORD);
             itemGroup.add(ModTools.DIAMONDIUM_PICKAXE);
             itemGroup.add(ModTools.DIAMONDIUM_AXE);
