@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "op-tools",
+	"version": "${version}",
+	"name": "op tools",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/op-tools/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"jaymanh.optools.OpTools"
+		],
+		"client": [
+			"jaymanh.optools.OpToolsClient"
+		],
+		"fabric-datagen": [
+			"jaymanh.optools.OpToolsDataGenerator"
+		]
+	},
+	"mixins": [
+		"op-tools.mixins.json",
+		{
+			"config": "op-tools.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.3",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
