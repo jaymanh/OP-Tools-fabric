@@ -32,7 +32,7 @@ public class DiamondiumToolsMaterial implements ToolMaterial {
 
     @Override
     public Ingredient getRepairIngredient(){
-        return Ingredient.ofItems(Items.DIAMOND);
+        return Ingredient.ofItems(Items.AIR);
     }
 
     public static final DiamondiumToolsMaterial INSTANCE = new DiamondiumToolsMaterial();
