@@ -36,6 +36,22 @@ public class ModTools {
             new SwordItem(DiamondiumToolsMaterial.INSTANCE, 12, 0.6f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_sword"
         );
+    public static final Item DIAMONDIUM_PICKAXE = register(
+            new PickaxeItem(DiamondiumToolsMaterial.INSTANCE, 5,0.2f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_pickaxe"
+    );
+    public static final Item DIAMONDIUM_AXE = register(
+            new AxeItem(DiamondiumToolsMaterial.INSTANCE, 15, 0.4f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_axe"
+    );
+    public static final Item DIAMONDIUM_SHOVEL = register(
+            new ShovelItem(DiamondiumToolsMaterial.INSTANCE, 8, 0.5f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_shovel"
+    );
+    public static final Item DIAMONDIUM_HOE = register(
+            new HoeItem(DiamondiumToolsMaterial.INSTANCE, 7, 1f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_hoe"
+    );
 
 
     public static void initialise(){
@@ -43,6 +59,10 @@ public class ModTools {
 
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModTools.DIAMONDIUM_SWORD);
+            itemGroup.add(ModTools.DIAMONDIUM_PICKAXE);
+            itemGroup.add(ModTools.DIAMONDIUM_AXE);
+            itemGroup.add(ModTools.DIAMONDIUM_SHOVEL);
+            itemGroup.add(ModTools.DIAMONDIUM_HOE);
         });
     }
 }
