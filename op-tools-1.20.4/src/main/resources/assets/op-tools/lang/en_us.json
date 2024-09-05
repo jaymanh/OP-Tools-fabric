@@ -4,12 +4,20 @@
   "item.op-tools.diamondium_axe": "Diamondium Axe",
   "item.op-tools.diamondium_shovel": "Diamondium Shovel",
   "item.op-tools.diamondium_hoe": "Diamondium Hoe",
+  "item.op-tools.diamondium_helmet": "Diamondium Helmet",
+  "item.op-tools.diamondium_chestplate": "Diamondium Chestplate",
+  "item.op-tools.diamondium_leggings": "Diamondium Leggings",
+  "item.op-tools.diamondium_boots": "Diamondium Boots",
 
   "item.op-tools.diamondillium_sword": "Diamondillium Sword",
   "item.op-tools.diamondillium_pickaxe": "Diamondillium Pickaxe",
   "item.op-tools.diamondillium_axe": "Diamondillium Axe",
   "item.op-tools.diamondillium_shovel": "Diamondillium Shovel",
   "item.op-tools.diamondillium_hoe": "Diamondillium Hoe",
+  "item.op-tools.diamondillium_helmet": "Diamondillium Helmet",
+  "item.op-tools.diamondillium_chestplate": "Diamondillium Chestplate",
+  "item.op-tools.diamondillium_leggings": "Diamondillium Leggings",
+  "item.op-tools.diamondillium_boots": "Diamondillium Boots",
 
   "itemGroup.op-tools": "OP Tools"
 }
