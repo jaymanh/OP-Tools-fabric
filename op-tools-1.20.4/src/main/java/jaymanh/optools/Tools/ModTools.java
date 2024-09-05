@@ -35,7 +35,7 @@ public class ModTools {
     public static final Item DIAMONDIUM_SWORD = register(
             new SwordItem(DiamondiumToolsMaterial.INSTANCE, 12, 0.6f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_sword"
-        );
+    );
     public static final Item DIAMONDIUM_PICKAXE = register(
             new PickaxeItem(DiamondiumToolsMaterial.INSTANCE, 5,0.2f, new FabricItemSettings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_pickaxe"
