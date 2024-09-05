@@ -1,5 +1,6 @@
 package jaymanh.optools.Tools;
 
+import jaymanh.optools.Items.ModItems;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -32,7 +33,7 @@ public class DiamondilliumToolsMaterial implements ToolMaterial {
 
     @Override
     public Ingredient getRepairIngredient(){
-        return Ingredient.ofItems(Items.AIR);
+        return Ingredient.ofItems(ModItems.DIAMONDILLIUM_INGOT);
     }
 
     public static final DiamondilliumToolsMaterial INSTANCE = new DiamondilliumToolsMaterial();

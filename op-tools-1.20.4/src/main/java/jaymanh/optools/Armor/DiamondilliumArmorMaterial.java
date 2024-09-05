@@ -1,5 +1,6 @@
 package jaymanh.optools.Armor;
 
+import jaymanh.optools.Items.ModItems;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
@@ -42,7 +43,7 @@ public class DiamondilliumArmorMaterial implements ArmorMaterial {
     }
     @Override
     public Ingredient getRepairIngredient(){
-        return Ingredient.ofItems(Items.AIR);
+        return Ingredient.ofItems(ModItems.DIAMONDILLIUM_INGOT);
     }
     @Override
     public String getName(){
