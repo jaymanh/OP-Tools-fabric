@@ -7,14 +7,14 @@
     ],
     "key": {
         "o": {
-            "item": "op-tools.diamondium_ingot"
+            "item": "op-tools:diamondium_ingot"
         },
         "/": {
             "item": "minecraft:stick"
         }
     },
     "result": {
-        "item": "op-tools.diamondium_pickaxe",
+        "item": "op-tools:diamondium_pickaxe",
         "count": 1
     }
 }

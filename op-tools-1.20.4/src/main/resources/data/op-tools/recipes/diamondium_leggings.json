@@ -7,11 +7,11 @@
     ],
     "key": {
         "o": {
-            "item": "op-tools.diamondium_ingot"
+            "item": "op-tools:diamondium_ingot"
         }
     },
     "result": {
-        "item": "op-tools.diamondium_leggings",
+        "item": "op-tools:diamondium_leggings",
         "count": 1
     }
 }

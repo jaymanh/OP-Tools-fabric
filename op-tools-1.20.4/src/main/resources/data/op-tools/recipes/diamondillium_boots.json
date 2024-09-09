@@ -6,11 +6,11 @@
     ],
     "key": {
         "o": {
-            "item": "op-tools.diamondillium_ingot"
+            "item": "op-tools:diamondillium_ingot"
         }
     },
     "result": {
-        "item": "op-tools.diamondillium_boots",
+        "item": "op-tools:diamondillium_boots",
         "count": 1
     }
 }
