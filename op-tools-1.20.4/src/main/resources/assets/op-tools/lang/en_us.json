@@ -22,5 +22,8 @@
   "item.op-tools.diamondium_ingot": "Diamondium Ingot",
   "item.op-tools.diamondillium_ingot": "Diamondillium Ingot",
 
+  "block.op-tools.diamondillium_block": "Diamondillium Block",
+  "block.op-tools.diamondium_block": "Diamondium Block",
+
   "itemGroup.op-tools": "OP Tools"
 }

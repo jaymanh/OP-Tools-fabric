@@ -1,6 +1,7 @@
 package jaymanh.optools;
 
 import jaymanh.optools.Armor.ModArmor;
+import jaymanh.optools.Blocks.ModBlocks;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import net.fabricmc.api.ModInitializer;
@@ -25,6 +26,7 @@ public class OpTools implements ModInitializer {
 		ModTools.initialise();
 		ModArmor.initialise();
 		ModItems.initialise();
+		ModBlocks.initialize();
 
 	}
 }

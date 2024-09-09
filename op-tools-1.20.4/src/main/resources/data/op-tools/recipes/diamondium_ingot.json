@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#n#",
+        "n#n",
+        "#n#"
+    ],
+    "key": {
+        "#": {
+            "item": "op-tools:diamondillium_ingot"
+        },
+        "n": {
+            "item": "minecraft:netherite_ingot"
+        }
+    },
+    "result": {
+        "item": "op-tools:diamondium_ingot",
+        "count": 1
+    },
+    "group": "diamondium_ingot"
+}
