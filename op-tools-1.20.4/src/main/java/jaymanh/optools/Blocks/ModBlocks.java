@@ -25,7 +25,7 @@ public class ModBlocks {
     }
 
     public static final Block DIAMONDIUM_BLOCK = register(
-            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.NETHERITE).hardness(5f).requiresTool()),
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.NETHERITE).hardness(4f).requiresTool()),
             "diamondium_block",
             true
     );
