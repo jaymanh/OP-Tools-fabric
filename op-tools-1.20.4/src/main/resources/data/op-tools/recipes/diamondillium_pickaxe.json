@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ooo",
+        " / ",
+        " / "
+    ],
+    "key": {
+        "o": {
+            "item": "op-tools.diamondillium_ingot"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "op-tools.diamondillium_pickaxe",
+        "count": 1
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "o o",
+        "ooO",
+        "ooo"
+    ],
+    "key": {
+        "o": {
+            "item": "op-tools.diamondillium_ingot"
+        },
+        "O": {
+            "item": "op-tools.diamondillium_hoe"
+        }
+    },
+    "result": {
+        "item": "op-tools.diamondillium_chestplate",
+        "count": 1
+    }
+}
