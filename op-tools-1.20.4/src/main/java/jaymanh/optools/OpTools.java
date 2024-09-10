@@ -4,6 +4,7 @@ import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Blocks.ModBlocks;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
+import jaymanh.optools.oregen.ModOreGenerator;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ public class OpTools implements ModInitializer {
 		ModArmor.initialise();
 		ModItems.initialise();
 		ModBlocks.initialize();
+		ModOreGenerator.initialise();
 
 	}
 }
