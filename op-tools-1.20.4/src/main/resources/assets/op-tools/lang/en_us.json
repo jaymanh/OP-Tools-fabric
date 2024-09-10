@@ -22,8 +22,11 @@
   "item.op-tools.diamondium_ingot": "Diamondium Ingot",
   "item.op-tools.diamondillium_ingot": "Diamondillium Ingot",
 
+  "item.op-tools.raw_darkmatter": "Darkmatter",
+
   "block.op-tools.diamondillium_block": "Diamondillium Block",
   "block.op-tools.diamondium_block": "Diamondium Block",
+  "block.op-tools.darkmatter_ore": "Darkmatter Ore",
 
   "itemGroup.op-tools": "OP Tools"
 }

@@ -36,11 +36,18 @@ public class ModBlocks {
             true
     );
 
+    public static final Block DARKMATTER_ORE = register(
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).hardness(1.5f).requiresTool()),
+            "darkmatter_ore",
+            true
+    );
+
     public static void initialize(){
 
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlocks.DIAMONDIUM_BLOCK.asItem());
             itemGroup.add(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
+            itemGroup.add(ModBlocks.DARKMATTER_ORE.asItem());
         });
 
     }

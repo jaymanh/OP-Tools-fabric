@@ -10,7 +10,7 @@
             "item": "minecraft:diamond"
         },
         "n": {
-            "item": "minecraft:netherite_ingot"
+            "item": "op-tools:raw_darkmatter"
         }
     },
     "result": {

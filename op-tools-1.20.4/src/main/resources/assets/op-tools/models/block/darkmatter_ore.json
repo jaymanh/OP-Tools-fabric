@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "op-tools:block/darkmatter_ore"
+  }
+}

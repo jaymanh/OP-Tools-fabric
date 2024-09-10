@@ -12,12 +12,14 @@ public class ModItems {
 
     public static final Item DIAMONDIUM_INGOT = register(new Item(new FabricItemSettings().rarity(Rarity.EPIC).fireproof()), "diamondium_ingot");
     public static final Item DIAMONDILLIUM_INGOT = register(new Item(new FabricItemSettings().rarity(Rarity.RARE).fireproof()), "diamondillium_ingot");
+    public static final Item RAW_DARKMATTER = register(new Item(new FabricItemSettings().rarity(Rarity.UNCOMMON)),"raw_darkmatter");
 
     public static void initialise(){
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
 
             itemGroup.add(DIAMONDIUM_INGOT);
             itemGroup.add(DIAMONDILLIUM_INGOT);
+            itemGroup.add(RAW_DARKMATTER);
 
         });
     }
