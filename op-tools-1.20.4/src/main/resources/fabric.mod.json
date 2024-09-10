@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "op-tools",
-	"version": "1.0.3",
+	"version": "1.1.2",
 	"name": "OP Tools",
 	"description": "This is a basic mod that adds op tools to survival",
 	"authors": [

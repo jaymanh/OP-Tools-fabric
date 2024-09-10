@@ -26,7 +26,8 @@
 
   "block.op-tools.diamondillium_block": "Diamondillium Block",
   "block.op-tools.diamondium_block": "Diamondium Block",
-  "block.op-tools.darkmatter_ore": "Darkmatter Ore",
+  "block.op-tools.stone_darkmatter_ore": "Darkmatter Ore",
+  "block.op-tools.deepslate_darkmatter_ore": "Deepslate Darkmatter Ore",
 
   "itemGroup.op-tools": "OP Tools"
 }
