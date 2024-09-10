@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "op-tools:block/darkmatter_ore"
+    "all": "op-tools:block/deepslate_darkmatter_ore"
   }
 }

@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "op-tools:darkmatter_ore"
+          "Name": "op-tools:stone_darkmatter_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",
@@ -15,7 +15,7 @@
       },
       {
         "state": {
-          "Name": "op-tools:darkmatter_ore"
+          "Name": "op-tools:deepslate_darkmatter_ore"
         },
         "target": {
           "predicate_type": "minecraft:tag_match",

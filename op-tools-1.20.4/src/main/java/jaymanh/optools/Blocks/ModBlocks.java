@@ -36,9 +36,15 @@ public class ModBlocks {
             true
     );
 
-    public static final Block DARKMATTER_ORE = register(
-            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).hardness(1.5f).requiresTool()),
-            "darkmatter_ore",
+    public static final Block STONE_DARKMATTER_ORE = register(
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).hardness(1f).requiresTool()),
+            "stone_darkmatter_ore",
+            true
+    );
+
+    public static final Block DEEPSLATE_DARKMATTER_ORE = register(
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.DEEPSLATE).hardness(1.5f).requiresTool()),
+            "deepslate_darkmatter_ore",
             true
     );
 
@@ -47,8 +53,8 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlocks.DIAMONDIUM_BLOCK.asItem());
             itemGroup.add(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
-            itemGroup.add(ModBlocks.DARKMATTER_ORE.asItem());
+            itemGroup.add(ModBlocks.STONE_DARKMATTER_ORE.asItem());
+            itemGroup.add(ModBlocks.DEEPSLATE_DARKMATTER_ORE.asItem());
         });
-
     }
 }

@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "op-tools:darkmatter_ore",
+              "name": "op-tools:stone_darkmatter_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
