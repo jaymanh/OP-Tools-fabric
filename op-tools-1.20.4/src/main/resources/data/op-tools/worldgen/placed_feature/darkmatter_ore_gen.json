@@ -1,5 +1,5 @@
 {
-  "feature": "op-tools:darkmatter_ore_feature",
+  "feature": "op-tools:darkmatter_ore_gen",
   "placement": [
     {
       "type": "minecraft:count",
