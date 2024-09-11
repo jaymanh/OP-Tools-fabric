@@ -21,7 +21,7 @@ public class WorkStations {
         ModBlockEntityType.initialize();
 
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.add(REFINERY.asItem());
+            itemGroup.add(WorkStations.REFINERY.asItem());
         });
     }
 }
