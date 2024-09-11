@@ -1,4 +1,4 @@
-package jaymanh.optools.oregen;
+package jaymanh.optools.OreGen;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;

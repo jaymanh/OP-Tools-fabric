@@ -4,13 +4,12 @@ import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Blocks.ModBlocks;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
-import jaymanh.optools.oregen.ModOreGenerator;
+import jaymanh.optools.OreGen.ModOreGenerator;
+import jaymanh.optools.WorkStation.WorkStations;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.channels.FileChannel;
 
 public class OpTools implements ModInitializer {
 	public static final String MOD_ID = "op-tools";
@@ -29,6 +28,7 @@ public class OpTools implements ModInitializer {
 		ModItems.initialise();
 		ModBlocks.initialize();
 		ModOreGenerator.initialise();
+		WorkStations.initialise();
 
 	}
 }
