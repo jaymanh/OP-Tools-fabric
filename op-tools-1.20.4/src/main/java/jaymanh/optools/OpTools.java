@@ -5,6 +5,7 @@ import jaymanh.optools.Blocks.ModBlocks;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import jaymanh.optools.OreGen.ModOreGenerator;
+import jaymanh.optools.WorkStation.ModBlockEntityType;
 import jaymanh.optools.WorkStation.WorkStations;
 import net.fabricmc.api.ModInitializer;
 
@@ -28,7 +29,7 @@ public class OpTools implements ModInitializer {
 		ModItems.initialise();
 		ModBlocks.initialize();
 		ModOreGenerator.initialise();
-		WorkStations.initialise();
+		ModBlockEntityType.initialise();
 
 	}
 }

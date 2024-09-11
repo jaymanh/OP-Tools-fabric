@@ -17,12 +17,5 @@ public class WorkStations {
             new RefineryBlock(AbstractBlock.Settings.create())
     );
 
-    public static void initialise(){
-        ModBlockEntityType.initialize();
-
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.add(WorkStations.REFINERY.asItem());
-        });
-    }
 }
 
