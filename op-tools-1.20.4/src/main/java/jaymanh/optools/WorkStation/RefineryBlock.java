@@ -31,5 +31,5 @@ public class RefineryBlock extends BlockWithEntity {
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
-    
+
 }

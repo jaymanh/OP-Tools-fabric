@@ -16,6 +16,12 @@ public class WorkStations {
             new Identifier(MOD_ID, "refinery"),
             new RefineryBlock(AbstractBlock.Settings.create())
     );
+    public static void initialise(){
+
+        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(REFINERY.asItem());
+        });
+    }
 
 }
 

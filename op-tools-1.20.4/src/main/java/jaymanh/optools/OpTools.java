@@ -30,6 +30,7 @@ public class OpTools implements ModInitializer {
 		ModBlocks.initialize();
 		ModOreGenerator.initialise();
 		ModBlockEntityType.initialise();
+		WorkStations.initialise();
 
 	}
 }
