@@ -24,12 +24,15 @@ public class RefineryBlock extends BlockWithEntity {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new Refinery(pos, state);
+        return new RefineryBlockEntity(pos, state);
     }
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
-
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type){
+        return validateTicker(type, ModBlockEntityType.REFINERY, RefineryBlockEntity::tick);
+    }
 }

@@ -12,9 +12,9 @@ public class ModBlockEntityType {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MOD_ID, path), blockEntityType);
     }
 
-    public static final BlockEntityType<Refinery> REFINERY = register(
+    public static final BlockEntityType<RefineryBlockEntity> REFINERY = register(
             "refinery",
-            BlockEntityType.Builder.create(Refinery::new, WorkStations.REFINERY).build()
+            BlockEntityType.Builder.create(RefineryBlockEntity::new, WorkStations.REFINERY).build()
     );
 
     public static void initialise(){
