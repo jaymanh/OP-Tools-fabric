@@ -1,6 +1,5 @@
 package jaymanh.optools.WorkStation;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

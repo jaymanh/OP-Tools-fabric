@@ -10,8 +10,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import static jaymanh.optools.OpTools.MOD_ID;
-
 public class RefineryBlock extends BlockWithEntity {
     public RefineryBlock(Settings settings){
         super(settings);
