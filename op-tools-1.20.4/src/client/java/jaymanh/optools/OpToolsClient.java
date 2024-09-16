@@ -1,7 +1,6 @@
 package jaymanh.optools;
 
 import jaymanh.optools.GUI.Screen.ModScreenHandlers;
-import jaymanh.optools.GUI.Screen.RefineryScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 

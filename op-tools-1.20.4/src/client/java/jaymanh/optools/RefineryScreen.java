@@ -1,6 +1,7 @@
-package jaymanh.optools.GUI.Screen;
+package jaymanh.optools;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
