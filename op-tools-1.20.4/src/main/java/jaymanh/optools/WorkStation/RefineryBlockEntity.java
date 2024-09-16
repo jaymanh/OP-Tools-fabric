@@ -13,7 +13,7 @@ public class RefineryBlockEntity extends BlockEntity {
 
     public static void tick(World world, BlockPos pos, BlockState state, RefineryBlockEntity blockEntity){
         //runs once per game tick
-
+        
         return;
     }
 }
