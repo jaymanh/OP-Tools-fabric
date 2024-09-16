@@ -1,6 +1,8 @@
 package jaymanh.optools.Blocks.BlockEntitys;
 
 import jaymanh.optools.GUI.ImplementedInventory;
+import jaymanh.optools.GUI.Screen.ModScreenHandlers;
+import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import jaymanh.optools.Items.ModItems;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -34,13 +36,12 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
     private int progress = 0;
     private int maxProgress = 120;
 
-
     public RefineryBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntitys.REFINERY_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
-                return switch (index){
+                return switch (index) {
                     case 0 -> RefineryBlockEntity.this.progress;
                     case 1 -> RefineryBlockEntity.this.maxProgress;
                     default -> 0;
@@ -49,7 +50,7 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
 
             @Override
             public void set(int index, int value) {
-                switch (index){
+                switch (index) {
                     case 0 -> RefineryBlockEntity.this.progress = value;
                     case 1 -> RefineryBlockEntity.this.maxProgress = value;
                 }
@@ -92,9 +93,10 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
         return Text.translatable("block.op-tools.refinery");
     }
 
+    @Nullable
     @Override
-    public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return null;
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
+        return new RefineryScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
 

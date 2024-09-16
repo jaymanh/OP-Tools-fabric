@@ -3,6 +3,7 @@ package jaymanh.optools;
 import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
 import jaymanh.optools.Blocks.ModBlocks;
+import jaymanh.optools.GUI.Screen.ModScreenHandlers;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import jaymanh.optools.OreGen.ModOreGenerator;
@@ -29,6 +30,7 @@ public class OpTools implements ModInitializer {
 		ModBlocks.initialize();
 		ModOreGenerator.initialise();
 		ModBlockEntitys.initialise();
+		ModScreenHandlers.registerScreenHandlers();
 
 	}
 }

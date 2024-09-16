@@ -1,54 +1,99 @@
 package jaymanh.optools.GUI.Screen;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.GameRenderer;
+import jaymanh.optools.Blocks.BlockEntitys.RefineryBlockEntity;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
 
-import static jaymanh.optools.OpTools.MOD_ID;
+public class RefineryScreenHandler extends ScreenHandler {
+    private  final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
+    public final RefineryBlockEntity blockEntity;
 
-public class RefineryScreenHandler extends HandledScreen<RefineryScreenHandler>{
-    private static final Identifier TEXTURE = new Identifier(MOD_ID, "textures/gui/refinery_gui.pug");
-
-    public RefineryScreenHandler(RefineryScreenHandler handler, PlayerInventory inventory, Text title) {
-        super(handler, inventory, title);
+    public RefineryScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
+        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
+                new ArrayPropertyDelegate(2));
     }
 
-    @Override
-    protected void init() {
-        super.init();
-        titleY = 10000;
-        playerInventoryTitleY = 10000;
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, ArrayPropertyDelegate arrayPropertyDelegate) {
+        super(ModScreenHandlers.REFINERY_SCREEN_HANDLER, syncId);
+        checkSize(((Inventory) blockEntity), 2);
+        this.inventory = ((Inventory) blockEntity);
+        inventory.onOpen(playerInventory.player);
+        this.propertyDelegate = arrayPropertyDelegate;
+        this.blockEntity = ((RefineryBlockEntity) blockEntity);
+
+        this.addSlot(new Slot(playerInventory, 0, 80, 11));
+        this.addSlot(new Slot(playerInventory, 1, 80, 59));
+
+        addPlayerInventory(playerInventory);
+        addPlayerHotbar(playerInventory);
+
+        addProperties(arrayPropertyDelegate);
     }
 
-    @Override
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.setShaderColor(1f, 1f, 1f,1f);
-        RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - backgroundWidth) /2;
-        int y = (height - backgroundHeight) / 2;
-
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
-
-        renderProgressArrow(context, x, y);
-
+    public boolean isCrafting(){
+        return propertyDelegate.get(0) > 0;
     }
 
-    private void renderProgressArrow(DrawContext context, int x, int y) {
-        if(handler.isCrafting()){
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
+    public int getScaledProgress(){
+        int progress = this.propertyDelegate.get(0);
+        int maxProgress = this.propertyDelegate.get(1);
+        int progressArrowSize = 26;
+
+        return maxProgress != 0 && progress != 0 ? progress* progressArrowSize / maxProgress : 0;
+    }
+
+    private void addPlayerInventory(PlayerInventory playerInventory){
+        for (int i = 0; i< 3; ++i){
+            for (int j = 0; j < 9; ++j){
+                this.addSlot(new Slot(playerInventory, i + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+            }
+        }
+    }
+
+    private void addPlayerHotbar(PlayerInventory playerInventory) {
+        for (int i = 0; i < 9; ++i) {
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
-        super.render(context, mouseX, mouseY, delta);
-        drawMouseoverTooltip(context, mouseX, mouseY);
+    public ItemStack quickMove(PlayerEntity player, int invSlot) {
+        ItemStack newStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(invSlot);
+        if (slot != null && slot.hasStack()) {
+            ItemStack originalStack = slot.getStack();
+            newStack = originalStack.copy();
+            if (invSlot < this.inventory.size()) {
+                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (originalStack.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
+            } else {
+                slot.markDirty();
+            }
+        }
+
+        return newStack;
+    }
+
+
+    @Override
+    public boolean canUse(PlayerEntity player) {
+        return this.inventory.canPlayerUse(player);
     }
 }
 

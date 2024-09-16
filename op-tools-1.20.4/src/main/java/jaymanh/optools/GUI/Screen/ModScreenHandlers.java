@@ -1,33 +1,19 @@
 package jaymanh.optools.GUI.Screen;
 
-import jaymanh.optools.Blocks.BlockEntitys.RefineryBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.screen.ScreenHandlerType;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.util.Identifier;
 
-public class ModScreenHandlers extends ScreenHandler {
-    private  final Inventory inventory;
-    private final PropertyDelegate propertyDelegate;
-    public final RefineryBlockEntity blockEntity;
+import static jaymanh.optools.OpTools.MOD_ID;
 
-    public RefineryScreenHandler(int )
+public class ModScreenHandlers {
+    public static final ScreenHandlerType<RefineryScreenHandler> REFINERY_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(MOD_ID, "refinery"),
+            new ExtendedScreenHandlerType<>(RefineryScreenHandler::new));
 
-    protected ModScreenHandlers(@Nullable ScreenHandlerType<?> type, int syncId) {
-        super(type, syncId);
-    }
+    public static void registerScreenHandlers(){
 
-    @Override
-    public ItemStack quickMove(PlayerEntity player, int slot) {
-        return null;
-    }
-
-    @Override
-    public boolean canUse(PlayerEntity player) {
-        return false;
     }
 }
