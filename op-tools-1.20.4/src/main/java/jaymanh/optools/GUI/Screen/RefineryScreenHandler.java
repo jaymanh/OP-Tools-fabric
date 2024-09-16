@@ -22,7 +22,7 @@ public class RefineryScreenHandler extends ScreenHandler {
                 new ArrayPropertyDelegate(2));
     }
 
-    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, ArrayPropertyDelegate arrayPropertyDelegate) {
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.REFINERY_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);
