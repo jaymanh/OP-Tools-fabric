@@ -1,12 +1,11 @@
 package jaymanh.optools;
 
 import jaymanh.optools.Armor.ModArmor;
+import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
 import jaymanh.optools.Blocks.ModBlocks;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import jaymanh.optools.OreGen.ModOreGenerator;
-import jaymanh.optools.WorkStation.ModBlockEntityType;
-import jaymanh.optools.WorkStation.WorkStations;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -29,8 +28,7 @@ public class OpTools implements ModInitializer {
 		ModItems.initialise();
 		ModBlocks.initialize();
 		ModOreGenerator.initialise();
-		ModBlockEntityType.initialise();
-		WorkStations.initialise();
+		ModBlockEntitys.initialise();
 
 	}
 }

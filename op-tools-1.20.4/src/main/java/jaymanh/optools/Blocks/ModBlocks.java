@@ -1,5 +1,6 @@
 package jaymanh.optools.Blocks;
 
+import jaymanh.optools.Blocks.CustomBlockTypes.RefineryBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -48,6 +49,12 @@ public class ModBlocks {
             true
     );
 
+    public static final Block REFINERY = register(
+            new RefineryBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).hardness(0.5f).requiresTool()),
+            "refinery",
+            true
+    );
+
     public static void initialize(){
 
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
@@ -55,6 +62,7 @@ public class ModBlocks {
             itemGroup.add(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
             itemGroup.add(ModBlocks.STONE_DARKMATTER_ORE.asItem());
             itemGroup.add(ModBlocks.DEEPSLATE_DARKMATTER_ORE.asItem());
+            itemGroup.add(ModBlocks.REFINERY.asItem());
         });
     }
 }
