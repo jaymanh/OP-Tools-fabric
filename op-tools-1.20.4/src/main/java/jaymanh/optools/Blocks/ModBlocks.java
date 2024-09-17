@@ -50,7 +50,7 @@ public class ModBlocks {
     );
 
     public static final Block REFINERY = register(
-            new RefineryBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).hardness(0.5f).requiresTool()),
+            new RefineryBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).hardness(0.5f)),
             "refinery",
             true
     );

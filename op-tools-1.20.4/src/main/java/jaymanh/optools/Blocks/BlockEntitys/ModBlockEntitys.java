@@ -1,7 +1,6 @@
 package jaymanh.optools.Blocks.BlockEntitys;
 
 import jaymanh.optools.Blocks.ModBlocks;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityType;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

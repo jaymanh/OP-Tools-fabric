@@ -1,13 +1,11 @@
 package jaymanh.optools.Blocks.BlockEntitys;
 
 import jaymanh.optools.GUI.ImplementedInventory;
-import jaymanh.optools.GUI.Screen.ModScreenHandlers;
 import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import jaymanh.optools.Items.ModItems;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
