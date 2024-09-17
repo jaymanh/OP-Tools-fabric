@@ -63,8 +63,28 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
         };
     }
 
+    public ItemStack getRenderStack() {
+        if(this.getStack(OUTPUT_SLOT).isEmpty()) {
+            return this.getStack(INPUT_SLOT);
+        } else {
+            return this.getStack(OUTPUT_SLOT);
+        }
+    }
+
     @Override
-    protected void writeNbt(NbtCompound nbt){
+    public void markDirty() {
+        world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        super.markDirty();
+    }
+
+    @Override
+    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+        buf.writeBlockPos(this.pos);
+    }
+
+
+    @Override
+    protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("refinery.progress", progress);
@@ -84,11 +104,6 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
     }
 
     @Override
-    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
-        buf.writeBlockPos(this.pos);
-    }
-
-    @Override
     public Text getDisplayName() {
         return Text.translatable("block.op-tools.refinery");
     }
@@ -97,6 +112,11 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new RefineryScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    }
+
+
+    private void resetProgress() {
+        this.progress = 0;
     }
 
 
@@ -124,9 +144,6 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
         }
     }
 
-    private void resetProgress() {
-        this.progress = 0;
-    }
 
     private void craftItem() {
         this.removeStack(INPUT_SLOT, 1);
@@ -161,4 +178,5 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
     private boolean isOutputSlotEmptyOrReceivable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getCount();
     }
+
 }

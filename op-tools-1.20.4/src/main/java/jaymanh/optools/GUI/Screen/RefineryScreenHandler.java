@@ -22,7 +22,8 @@ public class RefineryScreenHandler extends ScreenHandler {
                 new ArrayPropertyDelegate(2));
     }
 
-    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory,
+                                     BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.REFINERY_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);
@@ -30,8 +31,9 @@ public class RefineryScreenHandler extends ScreenHandler {
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((RefineryBlockEntity) blockEntity);
 
-        this.addSlot(new Slot(playerInventory, 0, 80, 11));
-        this.addSlot(new Slot(playerInventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 0, 80, 11));
+        this.addSlot(new Slot(inventory, 1, 80, 59));
+
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -51,10 +53,10 @@ public class RefineryScreenHandler extends ScreenHandler {
         return maxProgress != 0 && progress != 0 ? progress* progressArrowSize / maxProgress : 0;
     }
 
-    private void addPlayerInventory(PlayerInventory playerInventory){
-        for (int i = 0; i< 3; ++i){
-            for (int j = 0; j < 9; ++j){
-                this.addSlot(new Slot(playerInventory, i + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+    private void addPlayerInventory(PlayerInventory playerInventory) {
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
     }
@@ -89,6 +91,7 @@ public class RefineryScreenHandler extends ScreenHandler {
 
         return newStack;
     }
+
 
 
     @Override

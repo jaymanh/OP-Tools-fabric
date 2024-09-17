@@ -28,19 +28,18 @@ public class RefineryScreen extends HandledScreen<RefineryScreenHandler> {
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.setShaderColor(1f, 1f, 1f,1f);
+        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - backgroundWidth) /2;
+        int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         renderProgressArrow(context, x, y);
-
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
-        if(handler.isCrafting()){
+        if(handler.isCrafting()) {
             context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
         }
     }
