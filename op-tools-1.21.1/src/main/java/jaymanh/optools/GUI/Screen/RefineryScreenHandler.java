@@ -18,8 +18,8 @@ public class RefineryScreenHandler extends ScreenHandler {
     private final PropertyDelegate propertyDelegate;
     public final RefineryBlockEntity blockEntity;
 
-    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPos pos) {
-        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(pos),
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPosPayload payLoad) {
+        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(payLoad.pos),
                 new ArrayPropertyDelegate(2));
     }
 
@@ -41,6 +41,8 @@ public class RefineryScreenHandler extends ScreenHandler {
 
         addProperties(arrayPropertyDelegate);
     }
+
+
 
     public boolean isCrafting(){
         return propertyDelegate.get(0) > 0;
