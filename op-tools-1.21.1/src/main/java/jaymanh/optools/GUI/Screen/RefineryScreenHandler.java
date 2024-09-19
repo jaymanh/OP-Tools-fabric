@@ -11,14 +11,15 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.util.math.BlockPos;
 
 public class RefineryScreenHandler extends ScreenHandler {
     private  final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     public final RefineryBlockEntity blockEntity;
 
-    public RefineryScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPos pos) {
+        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(pos),
                 new ArrayPropertyDelegate(2));
     }
 
