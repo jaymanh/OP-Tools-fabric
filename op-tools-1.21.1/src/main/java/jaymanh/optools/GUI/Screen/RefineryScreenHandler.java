@@ -6,20 +6,18 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.util.math.BlockPos;
 
 public class RefineryScreenHandler extends ScreenHandler {
     private  final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     public final RefineryBlockEntity blockEntity;
 
-    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPosPayload payLoad) {
-        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(payLoad.pos),
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPosPayload payload) {
+        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(payload.pos()),
                 new ArrayPropertyDelegate(2));
     }
 
