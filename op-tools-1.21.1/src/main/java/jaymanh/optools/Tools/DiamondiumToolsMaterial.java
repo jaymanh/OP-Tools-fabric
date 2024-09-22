@@ -2,7 +2,6 @@ package jaymanh.optools.Tools;
 
 import jaymanh.optools.Items.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
@@ -20,8 +19,8 @@ public class DiamondiumToolsMaterial implements ToolMaterial {
     }
 
     @Override
-    public float getAttackDamage(){
-        return 10f;
+    public float getAttackDamage() {
+        return 120F;
     }
 
     @Override
