@@ -1,5 +1,6 @@
 package jaymanh.optools.Tools;
 
+
 import jaymanh.optools.Items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
@@ -20,7 +21,7 @@ public class DiamondiumToolsMaterial implements ToolMaterial {
 
     @Override
     public float getAttackDamage() {
-        return 120F;
+        return 120f;
     }
 
     @Override

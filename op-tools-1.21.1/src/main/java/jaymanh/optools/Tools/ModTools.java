@@ -11,13 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
-
-import static net.minecraft.item.Items.register;
-
 public class ModTools {
-    //DIAMONDIUM
-    //DIAMONDILLIUM
-
     public static Item register(Item item, String id){
          Identifier ItemID = Identifier.of(OpTools.MOD_ID, id);
         return Registry.register(Registries.ITEM, ItemID, item);
@@ -28,7 +22,6 @@ public class ModTools {
             .icon(() -> new ItemStack(ModTools.DIAMONDIUM_SWORD))
             .displayName(Text.translatable("itemGroup.op-tools"))
             .build();
-
 
     public static final Item DIAMONDIUM_SWORD = register(
             new SwordItem(DiamondiumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
@@ -76,7 +69,7 @@ public class ModTools {
     public static void initialise(){
         Registry.register(Registries.ITEM_GROUP, OP_TOOLS_ITEM_GROUP_KEY, OP_TOOLS_ITEM_GROUP);
 
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
+        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register((itemGroup) -> {
             itemGroup.add(ModTools.DIAMONDILLIUM_SWORD);
             itemGroup.add(ModTools.DIAMONDILLIUM_PICKAXE);
             itemGroup.add(ModTools.DIAMONDILLIUM_AXE);
