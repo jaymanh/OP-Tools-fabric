@@ -6,7 +6,7 @@
         }
     ],
     "result": {
-        "item": "op-tools:diamondillium_ingot",
+        "id": "op-tools:diamondillium_ingot",
         "count": 9
     },
     "group": "diamondillium_ingot"

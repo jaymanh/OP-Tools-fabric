@@ -1,7 +1,6 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "ooo",
         "o o",
         "o o"
     ],
@@ -11,7 +10,7 @@
         }
     },
     "result": {
-        "item": "op-tools:diamondillium_leggings",
+        "id": "op-tools:diamondillium_boots",
         "count": 1
     }
 }

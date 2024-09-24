@@ -7,14 +7,14 @@
     ],
     "key": {
         "o": {
-            "item": "op-tools:diamondillium_ingot"
+            "item": "op-tools:diamondium_ingot"
         },
         "/": {
             "item": "minecraft:stick"
         }
     },
     "result": {
-        "item": "op-tools:diamondillium_axe",
+        "id": "op-tools:diamondium_axe",
         "count": 1
     }
 }

@@ -1,20 +1,17 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "o",
-        "o",
-        "/"
+        "ooo",
+        "o o",
+        "o o"
     ],
     "key": {
         "o": {
             "item": "op-tools:diamondium_ingot"
-        },
-        "/": {
-            "item": "minecraft:stick"
         }
     },
     "result": {
-        "item": "op-tools:diamondium_sword",
+        "id": "op-tools:diamondium_leggings",
         "count": 1
     }
 }

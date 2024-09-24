@@ -1,9 +1,8 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "o o",
         "ooo",
-        "ooo"
+        "o o"
     ],
     "key": {
         "o": {
@@ -11,7 +10,7 @@
         }
     },
     "result": {
-        "item": "op-tools:diamondium_chestplate",
+        "id": "op-tools:diamondium_helmet",
         "count": 1
     }
 }

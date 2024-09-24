@@ -11,7 +11,7 @@
         }
     },
     "result": {
-        "item": "op-tools:diamondillium_block",
+        "id": "op-tools:diamondillium_block",
         "count": 1
     }
 }
