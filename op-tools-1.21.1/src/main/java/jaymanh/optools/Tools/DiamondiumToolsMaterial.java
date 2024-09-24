@@ -21,7 +21,7 @@ public class DiamondiumToolsMaterial implements ToolMaterial {
 
     @Override
     public float getAttackDamage() {
-        return 120f;
+        return 10f;
     }
 
     @Override
