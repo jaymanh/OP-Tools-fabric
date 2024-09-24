@@ -15,14 +15,16 @@
                 {
                   "condition": "minecraft:match_tool",
                   "predicate": {
-                    "enchantments": [
-                      {
-                        "enchantment": "minecraft:silk_touch",
-                        "levels": {
-                          "min": 1
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
                         }
-                      }
-                    ]
+                      ]
+                    }
                   }
                 }
               ]
@@ -55,5 +57,5 @@
       ]
     }
   ],
-  "random_sequence": "minecraft:blocks/lapis_ore"
+  "random_sequence": "minecraft:blocks/deepslate_lapis_ore"
 }
