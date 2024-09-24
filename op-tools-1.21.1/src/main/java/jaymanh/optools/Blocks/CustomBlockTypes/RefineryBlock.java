@@ -49,9 +49,8 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
         }
     }
 
-    /*
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient){
             NamedScreenHandlerFactory screenHandlerFactory = ((RefineryBlockEntity) world.getBlockEntity(pos));
 
@@ -62,7 +61,7 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
 
         return ActionResult.SUCCESS;
     }
-     */
+
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
