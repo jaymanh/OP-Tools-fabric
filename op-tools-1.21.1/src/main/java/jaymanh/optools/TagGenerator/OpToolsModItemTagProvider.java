@@ -1,12 +1,11 @@
-package jaymanh.optools;
+package jaymanh.optools.TagGenerator;
 
 import jaymanh.optools.Armor.ModArmor;
+import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -55,5 +54,9 @@ public class OpToolsModItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModArmor.DIAMONDILLIUM_BOOTS)
                 .add(ModArmor.DIAMONDIUM_BOOTS);
+
+        getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
+                .add(ModItems.DIAMONDILLIUM_INGOT)
+                .add(ModItems.DIAMONDIUM_INGOT);
     }
 }
