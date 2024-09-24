@@ -1,5 +1,6 @@
 package jaymanh.optools;
 
+import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Tools.ModTools;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -39,5 +40,20 @@ public class OpToolsModItemTagProvider extends FabricTagProvider<Item> {
                 .add(ModTools.DIAMONDILLIUM_SHOVEL)
                 .add(ModTools.DIAMONDIUM_SHOVEL);
 
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+                .add(ModArmor.DIAMONDILLIUM_HELMET)
+                .add(ModArmor.DIAMONDIUM_HELMET);
+
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(ModArmor.DIAMONDILLIUM_CHESTPLATE)
+                .add(ModArmor.DIAMONDIUM_CHESTPLATE);
+
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(ModArmor.DIAMONDILLIUM_LEGGINGS)
+                .add(ModArmor.DIAMONDIUM_LEGGINGS);
+
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(ModArmor.DIAMONDILLIUM_BOOTS)
+                .add(ModArmor.DIAMONDIUM_BOOTS);
     }
 }
