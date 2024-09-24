@@ -3,6 +3,9 @@ package jaymanh.optools.Tools;
 import jaymanh.optools.OpTools;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.effect.EnchantmentEffectTarget;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -78,7 +81,6 @@ public class ModTools {
 
     public static void initialise(){
         Registry.register(Registries.ITEM_GROUP, OP_TOOLS_ITEM_GROUP_KEY, OP_TOOLS_ITEM_GROUP);
-
         ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register((itemGroup) -> {
             itemGroup.add(ModTools.DIAMONDILLIUM_SWORD);
             itemGroup.add(ModTools.DIAMONDILLIUM_PICKAXE);
