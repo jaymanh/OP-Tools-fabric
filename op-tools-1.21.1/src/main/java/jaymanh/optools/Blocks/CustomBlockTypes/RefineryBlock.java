@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class RefineryBlock extends BlockWithEntity implements BlockEntityProvider {
+public class RefineryBlock extends BlockWithEntity implements BlockEntityProvider, test {
     public RefineryBlock(Settings settings) {
         super(settings);
     }
@@ -49,8 +49,7 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
         }
     }
 
-
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient){
             NamedScreenHandlerFactory screenHandlerFactory = ((RefineryBlockEntity) world.getBlockEntity(pos));
 
