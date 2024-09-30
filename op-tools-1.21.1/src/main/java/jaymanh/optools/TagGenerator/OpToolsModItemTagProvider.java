@@ -1,6 +1,7 @@
 package jaymanh.optools.TagGenerator;
 
 import jaymanh.optools.Armor.ModArmor;
+import jaymanh.optools.Foods.ModFoodItems;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -58,5 +59,8 @@ public class OpToolsModItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
                 .add(ModItems.DIAMONDILLIUM_INGOT)
                 .add(ModItems.DIAMONDIUM_INGOT);
+
+        getOrCreateTagBuilder(ItemTags.MEAT)
+                .add(ModFoodItems.SUPER_MEAT);
     }
 }
