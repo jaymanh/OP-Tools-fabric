@@ -10,14 +10,13 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class RefineryBlock extends BlockWithEntity implements BlockEntityProvider, test {
+public class RefineryBlock extends BlockWithEntity implements BlockEntityProvider {
     public RefineryBlock(Settings settings) {
         super(settings);
     }

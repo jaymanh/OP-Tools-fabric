@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "op-tools:item/super_food"
+    "layer0": "op-tools:item/super_meat"
   }
 }
