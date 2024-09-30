@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "op-tools:refined_darkmatter"
+            "items": "op-tools:diamondillium_ingot"
           }
         ]
       }
@@ -13,7 +13,7 @@
   },
   "rewards": {
     "recipes": [
-      "op-tools:diamondillium_ingot"
+      "op-tools:diamondium/diamondium_ingot"
     ]
   }
 }
