@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:charcoal"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "op-tools:super_fuel2"
+    ]
+  }
+}
