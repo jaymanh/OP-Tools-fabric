@@ -33,7 +33,7 @@
   "block.op-tools.deepslate_darkmatter_ore": "Deepslate Darkmatter Ore",
   "block.op-tools.refinery": "Refinery",
 
-  "enchantment.op-tools.auto_repair": "Auto Replant",
+  "enchantment.op-tools.auto_replant": "Auto Replant",
 
   "itemGroup.op-tools": "OP Tools"
 }

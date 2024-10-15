@@ -1,7 +1,11 @@
 {
   "values": [
     {
-      "id": "op-tools:auto_repair",
+      "id": "op-tools:auto_replant",
+      "required": false
+    },
+    {
+      "id": "op-tools:tree_breaker",
       "required": false
     }
   ]

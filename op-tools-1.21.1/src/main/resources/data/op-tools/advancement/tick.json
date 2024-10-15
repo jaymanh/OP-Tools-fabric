@@ -5,6 +5,6 @@
     }
   },
   "rewards": {
-    "function": "op-tools:auto_repair/tick"
+    "function": "op-tools:auto_replant/tick"
   }
 }

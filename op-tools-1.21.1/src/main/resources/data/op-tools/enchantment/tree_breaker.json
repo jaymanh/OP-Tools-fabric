@@ -1,0 +1,84 @@
+{
+  "description": {
+    "translate": "enchantments.op-tools.tree_breaker"
+  },
+  "supported_items": "#minecraft:axes",
+  "weight": 5,
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 1
+  },
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 5
+  },
+  "anvil_cost": 2,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "minecraft:hit_block": [
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/oak"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/birch"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/spruce"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/jungle"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/acacia"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/dark_oak"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/mangrove"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/cherry"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/crimson"
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:tree_breaker/warped"
+        }
+      }
+    ]
+  }
+}
