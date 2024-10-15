@@ -21,6 +21,55 @@
         "effect": {
           "type": "minecraft:run_function",
           "function": "op-tools:auto_repair/carrot"
+        },
+        "requirements": {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:carrots",
+          "properties": {}
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:auto_repair/potato"
+        },
+        "requirements": {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:potatoes",
+          "properties": {}
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:auto_repair/beetroot"
+        },
+        "requirements": {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:beetroots",
+          "properties": {}
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:auto_repair/wheat"
+        },
+        "requirements": {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:wheat",
+          "properties": {}
+        }
+      },
+      {
+        "effect": {
+          "type": "minecraft:run_function",
+          "function": "op-tools:auto_repair/nether_wart"
+        },
+        "requirements": {
+          "condition": "minecraft:block_state_property",
+          "block": "minecraft:nether_wart",
+          "properties": {}
         }
       }
     ]
