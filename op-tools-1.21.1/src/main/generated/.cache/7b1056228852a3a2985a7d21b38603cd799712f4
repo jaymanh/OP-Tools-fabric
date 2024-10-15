@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-15T15:25:29.0517644	OP Tools/Tags for minecraft:block
+// 1.21.1	2024-10-16T08:58:36.980906	OP Tools/Tags for minecraft:block
 3e919dea967d977f9c5d3714d71be19c84c1fcfa data\minecraft\tags\block\needs_diamond_tool.json
-b372df4c0b9fcdcbfc29b32467ac9fe363114c64 data\minecraft\tags\block\beacon_base_blocks.json
 a9e838b0890aac44a48df5f47ec19de38cac78c3 data\minecraft\tags\block\mineable\pickaxe.json
+b372df4c0b9fcdcbfc29b32467ac9fe363114c64 data\minecraft\tags\block\beacon_base_blocks.json

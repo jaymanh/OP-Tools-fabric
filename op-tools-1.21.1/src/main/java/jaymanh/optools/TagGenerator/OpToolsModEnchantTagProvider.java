@@ -21,9 +21,9 @@ public class OpToolsModEnchantTagProvider extends FabricTagProvider<Enchantment>
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
 
-        //getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
 
-        //getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
 
 
     }
