@@ -3,6 +3,7 @@ package jaymanh.optools.TagGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.EnchantmentTags;
@@ -19,12 +20,12 @@ public class OpToolsModEnchantTagProvider extends FabricTagProvider<Enchantment>
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).addOptional(Identifier.of(MOD_ID, "auto_repair"));
 
-        getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptional(Identifier.of(MOD_ID, "auto_repair"));
 
-        getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptionalTag(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptional(Identifier.of(MOD_ID, "auto_repair"));
 
-
+        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).add(Enchantments.MENDING);
     }
 }

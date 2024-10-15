@@ -1,8 +1,9 @@
 {
   "values": [
     {
-      "id": "#op-tools:auto_repair",
+      "id": "op-tools:auto_repair",
       "required": false
-    }
+    },
+    "minecraft:mending"
   ]
 }
