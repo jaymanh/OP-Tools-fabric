@@ -1,5 +1,7 @@
 {
-  "description": "Auto Repair",
+  "description": {
+    "translate": "enchantment.op-tools.auto_repair"
+  },
   "supported_items": "#minecraft:hoes",
   "weight": 5,
   "max_level": 1,
