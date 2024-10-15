@@ -4,7 +4,6 @@ import jaymanh.optools.Armor.ModArmorMaterials;
 import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
 import jaymanh.optools.Blocks.ModBlocks;
-import jaymanh.optools.Enchantments.ModEnchantments;
 import jaymanh.optools.Foods.ModFoodItems;
 import jaymanh.optools.Fuels.ModFuels;
 import jaymanh.optools.GUI.Screen.ModScreenHandlers;
@@ -39,7 +38,6 @@ public class OpTools implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 		ModFoodItems.initialise();
 		ModFuels.initialize();
-		ModEnchantments.initialize();
 
 	}
 }

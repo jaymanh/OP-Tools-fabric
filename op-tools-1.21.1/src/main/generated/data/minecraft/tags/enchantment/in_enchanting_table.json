@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "#op-tools:auto_repair",
+      "required": false
+    }
+  ]
+}
