@@ -1,0 +1,1 @@
+execute if block ~ ~ ~ minecraft:oak_log run summon marker ~ ~ ~ {Tags:["oak"]}

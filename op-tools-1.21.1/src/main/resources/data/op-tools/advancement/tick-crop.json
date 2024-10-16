@@ -4,7 +4,6 @@
       "trigger": "minecraft:tick"
     }
   },
-  "rewards": {
-    "function": "op-tools:auto_replant/tick"
-  }
+  "rewards":
+    {"function": "op-tools:auto_replant/tick"}
 }

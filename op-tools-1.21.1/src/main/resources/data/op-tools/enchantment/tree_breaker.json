@@ -1,6 +1,6 @@
 {
   "description": {
-    "translate": "enchantments.op-tools.tree_breaker"
+    "translate": "enchantment.op-tools.tree_breaker"
   },
   "supported_items": "#minecraft:axes",
   "weight": 5,
