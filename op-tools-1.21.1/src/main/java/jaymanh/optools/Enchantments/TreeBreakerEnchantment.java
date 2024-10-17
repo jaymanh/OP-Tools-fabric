@@ -19,7 +19,7 @@ import static com.mojang.text2speech.Narrator.LOGGER;
 
 public class TreeBreakerEnchantment {
 
-    private static final int MAX_BLOCKS = 1000;
+    private static final int MAX_BLOCKS = 64 * 9;
 
     private static void BreakTrees(BlockPos blockPos, Block woodType, World world, int level, EnchantmentEffectContext context, Entity user) {
         ArrayList<BlockPos> blockPosList = new ArrayList<>();
@@ -78,7 +78,12 @@ public class TreeBreakerEnchantment {
             BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y,(int)pos.z);
             LOGGER.info(world.getBlockState(blockPos).toString());
 
-            if(world.getBlockState(blockPos).getBlock() == Blocks.OAK_LOG || world.getBlockState(blockPos).getBlock() == Blocks.SPRUCE_LOG){
+            if(world.getBlockState(blockPos).getBlock() == Blocks.OAK_LOG || world.getBlockState(blockPos).getBlock() == Blocks.SPRUCE_LOG
+            || world.getBlockState(blockPos).getBlock() == Blocks.BIRCH_LOG || world.getBlockState(blockPos).getBlock() == Blocks.DARK_OAK_LOG
+                    || world.getBlockState(blockPos).getBlock() == Blocks.ACACIA_LOG || world.getBlockState(blockPos).getBlock() == Blocks.CHERRY_LOG
+                    || world.getBlockState(blockPos).getBlock() == Blocks.JUNGLE_LOG || world.getBlockState(blockPos).getBlock() == Blocks.MANGROVE_LOG
+                    || world.getBlockState(blockPos).getBlock() == Blocks.WARPED_HYPHAE || world.getBlockState(blockPos).getBlock() == Blocks.CRIMSON_HYPHAE
+            ){
                 BreakTrees(blockPos, world.getBlockState(blockPos).getBlock(), world, level, context, user);
             }
 
