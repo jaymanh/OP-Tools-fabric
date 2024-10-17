@@ -15,7 +15,7 @@ public class AutoRepairEnchantment {
         OpTools.register(Identifier.of("auto_repair"), (world, level, context, user, pos) -> {
             if (context.stack().isDamaged() && random.nextInt(100) == 0) {
                 context.stack().damage(-1, (LivingEntity) user, context.slot());
-                LOGGER.info(context.slot().asString());
+                LOGGER.info(context.slot().asString()); //Slot "any" means only "active" slots mainhand, offhand ect 
             }
         });
     }
