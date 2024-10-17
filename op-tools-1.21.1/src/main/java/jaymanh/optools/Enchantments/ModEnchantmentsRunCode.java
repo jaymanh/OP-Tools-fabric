@@ -10,7 +10,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static jaymanh.optools.OpTools.LOGGER;
 
 public record ModEnchantmentsRunCode(Identifier hook) implements EnchantmentEntityEffect {
     @Override

@@ -76,7 +76,7 @@ public class TreeBreakerEnchantment {
     public static void initialise(){
         OpTools.register(Identifier.of("tree_breaker_hit"), (world, level, context, user, pos) -> {
             BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y,(int)pos.z);
-            LOGGER.info(world.getBlockState(blockPos).toString());
+            //LOGGER.info(world.getBlockState(blockPos).toString());
 
             if(world.getBlockState(blockPos).getBlock() == Blocks.OAK_LOG || world.getBlockState(blockPos).getBlock() == Blocks.SPRUCE_LOG
             || world.getBlockState(blockPos).getBlock() == Blocks.BIRCH_LOG || world.getBlockState(blockPos).getBlock() == Blocks.DARK_OAK_LOG

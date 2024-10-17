@@ -4,6 +4,7 @@ import jaymanh.optools.Armor.ModArmorMaterials;
 import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
 import jaymanh.optools.Blocks.ModBlocks;
+import jaymanh.optools.Enchantments.AutoRepairEnchantment;
 import jaymanh.optools.Enchantments.ModEnchantmentsRunCode;
 import jaymanh.optools.Enchantments.TreeBreakerEnchantment;
 import jaymanh.optools.Foods.ModFoodItems;
@@ -21,7 +22,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
-import org.apache.logging.log4j.core.jmx.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,5 +67,6 @@ public class OpTools implements ModInitializer {
 		ModFoodItems.initialise();
 		ModFuels.initialize();
 		TreeBreakerEnchantment.initialise();
+		AutoRepairEnchantment.initialise();
 	}
 }
