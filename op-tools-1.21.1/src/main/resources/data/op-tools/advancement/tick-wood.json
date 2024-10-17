@@ -1,9 +1,0 @@
-{
-  "criteria": {
-    "tick": {
-      "trigger": "minecraft:tick"
-    }
-  },
-  "rewards":
-    {"function": "op-tools:tree_breaker/tick"}
-}
