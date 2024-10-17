@@ -8,6 +8,10 @@
       "id": "op-tools:tree_breaker",
       "required": false
     },
+    {
+      "id": "op-tools:auto_repair",
+      "required": false
+    },
     "minecraft:mending"
   ]
 }
