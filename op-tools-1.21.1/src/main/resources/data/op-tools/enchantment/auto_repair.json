@@ -14,9 +14,7 @@
     "per_level_above_first": 4
   },
   "anvil_cost": 1,
-  "slots": [
-    "any"
-  ],
+  "slots": ["any"],
   "effects": {
     "minecraft:tick": [
       {

@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static jaymanh.optools.OpTools.LOGGER;
 
 public class TreeBreakerEnchantment {
 
