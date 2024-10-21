@@ -14,15 +14,7 @@
     "per_level_above_first": 4
   },
   "anvil_cost": 1,
-  "slots": ["any"],
-  "effects": {
-    "minecraft:tick": [
-      {
-        "effect": {
-          "type": "op-tools:run_code",
-          "hook": "auto_repair"
-        }
-      }
-    ]
-  }
+  "slots": [
+    "body"
+  ]
 }
