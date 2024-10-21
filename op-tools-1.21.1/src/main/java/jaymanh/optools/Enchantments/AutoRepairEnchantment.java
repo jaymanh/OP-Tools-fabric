@@ -6,14 +6,17 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.Consumer;
 
 import static jaymanh.optools.OpTools.LOGGER;
 import static jaymanh.optools.OpTools.MOD_ID;
@@ -34,13 +37,15 @@ public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
             DynamicRegistryManager drm = world.getRegistryManager();
             Registry<Enchantment> reg = drm.get(RegistryKeys.ENCHANTMENT);
             Optional<RegistryEntry<Enchantment>> optional = Optional.ofNullable(reg.getEntry(reg.get(AUTO_REPAIR)));
-            // you can also use an Identifier, or an Enchantment in which case the returned RegistryEntry is not wrapped in an Optional
 
             RegistryEntry<Enchantment> auto_repair = optional.orElseThrow();
             if (EnchantmentHelper.getLevel(auto_repair, itemStack) > 0) {
                 //LOGGER.info("Found item with enchantment in slot: " + i);
                 if(itemStack.isDamaged() && random.nextInt(100) == 0) {
-                    itemStack.damage(-1, (LivingEntity) player, );
+                    Consumer<Item> repairConsumer = item -> {
+
+                    };
+                    itemStack.damage(-1, world, (ServerPlayerEntity) player, repairConsumer);
                 }
             }
         }
