@@ -3,8 +3,6 @@ package jaymanh.optools.Enchantments;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -54,19 +52,4 @@ public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
     public static void initialise() {
         ServerTickEvents.END_WORLD_TICK.register(new AutoRepairEnchantment());
     }
-
-
-
-/*
-    private static final Random random = new Random();
-
-    public static void initialise() {
-        OpTools.register(Identifier.of("auto_repair"), (world, level, context, user, pos) -> {
-            if (context.stack().isDamaged() && random.nextInt(100) == 0) {
-                context.stack().damage(-1, (LivingEntity) user, context.slot());
-                LOGGER.info(context.slot().asString()); //Slot "any" means only "active" slots mainhand, offhand, armor ect
-            }
-        });
-    }
- */
 }
