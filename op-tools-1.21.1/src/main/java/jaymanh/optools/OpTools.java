@@ -5,6 +5,7 @@ import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
 import jaymanh.optools.Blocks.ModBlocks;
 import jaymanh.optools.Enchantments.AutoRepairEnchantment;
+import jaymanh.optools.Enchantments.ElementalDamageEnchantments;
 import jaymanh.optools.Enchantments.ModEnchantmentsRunCode;
 import jaymanh.optools.Enchantments.TreeBreakerEnchantment;
 import jaymanh.optools.Foods.ModFoodItems;
@@ -68,5 +69,6 @@ public class OpTools implements ModInitializer {
 		ModFuels.initialize();
 		TreeBreakerEnchantment.initialise();
 		AutoRepairEnchantment.initialise();
+		ElementalDamageEnchantments.initialise();
 	}
 }

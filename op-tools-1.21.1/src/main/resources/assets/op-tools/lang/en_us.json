@@ -36,6 +36,9 @@
   "enchantment.op-tools.auto_replant": "Auto Replant",
   "enchantment.op-tools.tree_breaker": "Tree Breaker",
   "enchantment.op-tools.auto_repair": "Auto Repair",
+  "enchantment.op-tools.elemental_fire": "Fire",
+  "enchantment.op-tools.elemental_water": "Water",
+  "enchantment.op-tools.elemental_earth": "Earth",
 
   "itemGroup.op-tools": "OP Tools"
 }

@@ -20,11 +20,17 @@ public class OpToolsModEnchantTagProvider extends FabricTagProvider<Enchantment>
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker")).addOptional(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker"))
+                .addOptional(Identifier.of(MOD_ID, "auto_repair")).addOptional(Identifier.of(MOD_ID, "elemental_fire")).addOptional(Identifier.of(MOD_ID, "elemental_water"))
+                .addOptional(Identifier.of(MOD_ID, "elemental_earth")).addOptional(Identifier.of(MOD_ID, "elemental_lightning"));
 
-        getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker")).addOptional(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker"))
+                .addOptional(Identifier.of(MOD_ID, "auto_repair")).addOptional(Identifier.of(MOD_ID, "elemental_fire")).addOptional(Identifier.of(MOD_ID, "elemental_water"))
+                .addOptional(Identifier.of(MOD_ID, "elemental_earth")).addOptional(Identifier.of(MOD_ID, "elemental_lightning"));
 
-        getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker")).addOptional(Identifier.of(MOD_ID, "auto_repair"));
+        getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker"))
+                .addOptional(Identifier.of(MOD_ID, "auto_repair")).addOptional(Identifier.of(MOD_ID, "elemental_fire")).addOptional(Identifier.of(MOD_ID, "elemental_water"))
+                .addOptional(Identifier.of(MOD_ID, "elemental_earth")).addOptional(Identifier.of(MOD_ID, "elemental_lightning"));
 
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).add(Enchantments.MENDING);
     }

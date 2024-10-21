@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-17T15:00:07.0595001	OP Tools/Tags for minecraft:enchantment
-c9d6fec8dab5a18fb7d72e43ecff89f27021aafc data\minecraft\tags\enchantment\in_enchanting_table.json
-0230c06a6c6b4402af02dc73c74ea4cfafcd93c9 data\minecraft\tags\enchantment\non_treasure.json
-0230c06a6c6b4402af02dc73c74ea4cfafcd93c9 data\minecraft\tags\enchantment\on_traded_equipment.json
+// 1.21.1	2024-10-21T14:30:03.9431145	OP Tools/Tags for minecraft:enchantment
+a0337275752c2cd93587f8a807f729ff070c8ce8 data\minecraft\tags\enchantment\in_enchanting_table.json
+2a89991afcbaf3bbcfc0d6a1cc07cdce88740bdc data\minecraft\tags\enchantment\non_treasure.json
+2a89991afcbaf3bbcfc0d6a1cc07cdce88740bdc data\minecraft\tags\enchantment\on_traded_equipment.json

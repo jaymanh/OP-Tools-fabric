@@ -21,7 +21,7 @@
     "minecraft:hit_block": [
       {
         "effect": {
-          "type": "op-tools:run_code",
+            "type": "op-tools:run_code",
           "hook": "tree_breaker_hit"
         }
       }
