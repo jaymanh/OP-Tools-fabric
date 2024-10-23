@@ -3,7 +3,6 @@ package jaymanh.optools.Fuels;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Rarity;
 
 import static jaymanh.optools.Tools.ModTools.OP_TOOLS_ITEM_GROUP_KEY;
