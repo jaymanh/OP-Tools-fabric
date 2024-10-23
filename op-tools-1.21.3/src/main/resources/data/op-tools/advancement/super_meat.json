@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cooked_porkchop"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "op-tools:super_meat"
+    ]
+  }
+}
