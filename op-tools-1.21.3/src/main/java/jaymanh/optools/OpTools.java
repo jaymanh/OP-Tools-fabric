@@ -56,7 +56,7 @@ public class OpTools implements ModInitializer {
 
 		Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.of(MOD_ID, "run_code"), ModEnchantmentsRunCode.CODEC);
 
-		ModArmorMaterials.initialize();
+		ModArmorMaterials.initialise();
 
 		ModTools.initialise();
 		ModArmor.initialise();
