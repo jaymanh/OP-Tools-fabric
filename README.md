@@ -12,8 +12,8 @@ OP Tools also adds darkmatter ores which can be refined in a refinery used to cr
 I'm still very new to modding and this is basically my first mod so let me know if I broke anything.
 
 ## Future Ideas
-Enchantments:
--Elemental Damage: Add fire, ice, and/or lightning damage to weapons.
+### Enchantments:
+- Elemental Damage: Add fire, ice, and/or lightning damage to weapons.
 
 ## Usage
 If you want to use my mod in anything feel free I only ask I get credits of some kind and maybe a link or two. 
