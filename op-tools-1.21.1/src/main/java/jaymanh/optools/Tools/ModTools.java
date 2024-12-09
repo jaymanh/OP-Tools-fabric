@@ -73,7 +73,7 @@ public class ModTools {
             "diamondillium_shovel"
     );
     public static final Item DIAMONDILLIUM_HOE = register(
-            new PickaxeItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
+            new HoeItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
                     .attributeModifiers(HoeItem.createAttributeModifiers(DiamondilliumToolsMaterial.INSTANCE,6,1f))),
             "diamondillium_hoe"
     );
