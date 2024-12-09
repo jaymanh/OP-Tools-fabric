@@ -27,16 +27,12 @@ public class AutoReplantEnchantment{
     static {
         blockToItemMap.put(Blocks.CARROTS, Items.CARROT);
         blockToItemMap.put(Blocks.POTATOES, Items.POTATO);
-        blockToItemMap.put(Blocks.BEETROOTS, Items.BEETROOT);
+        blockToItemMap.put(Blocks.BEETROOTS, Items.BEETROOT_SEEDS);
         blockToItemMap.put(Blocks.NETHER_WART, Items.NETHER_WART);
-        blockToItemMap.put(Blocks.WHEAT, Items.WHEAT);
-        blockToItemMap.put(Blocks.MELON_STEM, Items.MELON_SEEDS);
-        blockToItemMap.put(Blocks.PUMPKIN_STEM, Items.PUMPKIN_SEEDS);
-        blockToItemMap.put(Blocks.COCOA, Items.COCOA_BEANS);
+        blockToItemMap.put(Blocks.WHEAT, Items.WHEAT_SEEDS);
     }
 
     private static void ReplantCrop(BlockPos blockPos, Block blockType, World world, int level, EnchantmentEffectContext context, Entity user) {
-        LOGGER.info(blockType.toString());
 
         Item item = blockToItemMap.get(blockType);
 
@@ -55,21 +51,13 @@ public class AutoReplantEnchantment{
     }
 
     public static void initialise() {
-        LOGGER.info("Test-1");
         OpTools.register(Identifier.of("crop_break"), (world, level, context, user, pos) -> {
             BlockPos blockPos = new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
             Block block = world.getBlockState(blockPos).getBlock();
 
-            LOGGER.info("Test1");
-            LOGGER.info(block.toString());
-            LOGGER.info(context.toString());
-
             if (block == Blocks.CARROTS || block == Blocks.POTATOES ||
                     block == Blocks.BEETROOTS || block == Blocks.NETHER_WART ||
-                    block == Blocks.WHEAT || block == Blocks.MELON_STEM ||
-                    block == Blocks.PUMPKIN_STEM || block == Blocks.COCOA) {
-
-                LOGGER.info("Test2");
+                    block == Blocks.WHEAT) {
 
                 ServerWorld serverWorld = (ServerWorld) world;
 
