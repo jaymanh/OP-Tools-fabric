@@ -12,7 +12,8 @@ OP Tools also adds darkmatter ores which can be refined in a refinery used to cr
 I'm still very new to modding and this is basically my first mod so let me know if I broke anything.
 
 ## Future Ideas
-I want to add a refined version of darkmatter to make the process of getting the tools more engaging, kind of like how ores are smelted but if you have anyideas I am open to them.
+### Enchantments:
+- Elemental Damage: Add fire, ice, and/or lightning damage to weapons.
 
 ## Usage
 If you want to use my mod in anything feel free I only ask I get credits of some kind and maybe a link or two. 
