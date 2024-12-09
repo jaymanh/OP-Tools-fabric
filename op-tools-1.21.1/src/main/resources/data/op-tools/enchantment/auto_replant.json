@@ -21,57 +21,8 @@
     "minecraft:hit_block": [
       {
         "effect": {
-          "type": "minecraft:run_function",
-          "function": "op-tools:auto_replant/carrot"
-        },
-        "requirements": {
-          "condition": "minecraft:block_state_property",
-          "block": "minecraft:carrots",
-          "properties": {}
-        }
-      },
-      {
-        "effect": {
-          "type": "minecraft:run_function",
-          "function": "op-tools:auto_replant/potato"
-        },
-        "requirements": {
-          "condition": "minecraft:block_state_property",
-          "block": "minecraft:potatoes",
-          "properties": {}
-        }
-      },
-      {
-        "effect": {
-          "type": "minecraft:run_function",
-          "function": "op-tools:auto_replant/beetroot"
-        },
-        "requirements": {
-          "condition": "minecraft:block_state_property",
-          "block": "minecraft:beetroots",
-          "properties": {}
-        }
-      },
-      {
-        "effect": {
-          "type": "minecraft:run_function",
-          "function": "op-tools:auto_replant/wheat"
-        },
-        "requirements": {
-          "condition": "minecraft:block_state_property",
-          "block": "minecraft:wheat",
-          "properties": {}
-        }
-      },
-      {
-        "effect": {
-          "type": "minecraft:run_function",
-          "function": "op-tools:auto_replant/nether_wart"
-        },
-        "requirements": {
-          "condition": "minecraft:block_state_property",
-          "block": "minecraft:nether_wart",
-          "properties": {}
+            "type": "op-tools:run_code",
+          "hook": "crop_break"
         }
       }
     ]
