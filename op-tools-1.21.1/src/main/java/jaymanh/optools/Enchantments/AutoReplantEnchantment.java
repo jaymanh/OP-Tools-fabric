@@ -41,29 +41,40 @@ public class AutoReplantEnchantment{
         Item item = blockToItemMap.get(blockType);
 
         if(item != null) {
+
             PlayerEntity player = (PlayerEntity) user;
             ItemStack itemStack = new ItemStack(item);
+
             if(hasItemInInventory(player, itemStack)){
 
+                int itemSlot = findItemSlot(player, itemStack);
+                removeItemInInventory(player, itemSlot);
+                world.setBlockState(blockPos, blockType.getDefaultState());
             }
-            
-            world.setBlockState(blockPos, blockType.getDefaultState());
         }
     }
 
     public static void initialise() {
+        LOGGER.info("Test-1");
         OpTools.register(Identifier.of("crop_break"), (world, level, context, user, pos) -> {
             BlockPos blockPos = new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
+            Block block = world.getBlockState(blockPos).getBlock();
 
-            if (world.getBlockState(blockPos).getBlock() == Blocks.CARROTS || world.getBlockState(blockPos).getBlock() == Blocks.POTATOES ||
-                    world.getBlockState(blockPos).getBlock() == Blocks.BEETROOTS || world.getBlockState(blockPos).getBlock() == Blocks.NETHER_WART ||
-                    world.getBlockState(blockPos).getBlock() == Blocks.WHEAT || world.getBlockState(blockPos).getBlock() == Blocks.MELON_STEM ||
-                    world.getBlockState(blockPos).getBlock() == Blocks.PUMPKIN_STEM || world.getBlockState(blockPos).getBlock() == Blocks.COCOA) {
-                Block blockType = world.getBlockState(blockPos).getBlock();
+            LOGGER.info("Test1");
+            LOGGER.info(block.toString());
+            LOGGER.info(context.toString());
+
+            if (block == Blocks.CARROTS || block == Blocks.POTATOES ||
+                    block == Blocks.BEETROOTS || block == Blocks.NETHER_WART ||
+                    block == Blocks.WHEAT || block == Blocks.MELON_STEM ||
+                    block == Blocks.PUMPKIN_STEM || block == Blocks.COCOA) {
+
+                LOGGER.info("Test2");
+
                 ServerWorld serverWorld = (ServerWorld) world;
 
                 serverWorld.getServer().execute(() -> {
-                    ReplantCrop(blockPos, blockType, world, level, context, user);
+                    ReplantCrop(blockPos, block, world, level, context, user);
                 });
             }
         });
