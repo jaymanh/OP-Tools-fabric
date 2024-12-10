@@ -5,6 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.effect.AllOfEnchantmentEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -64,7 +65,10 @@ public class ElementalDamageEnchantments {
         });
 
         OpTools.register(Identifier.of("elemental_lightning"), (world, level, context, user, pos) -> {
-
+            LOGGER.info("test");
+            LightningEntity lightning = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
+            lightning.setPosition(user.getPos());
+            world.spawnEntity(lightning);
         });
 
         OpTools.register(Identifier.of("elemental_ice"), (world, level, context, user, pos) -> {

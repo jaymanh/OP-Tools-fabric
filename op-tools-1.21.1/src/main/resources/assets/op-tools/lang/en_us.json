@@ -39,6 +39,8 @@
   "enchantment.op-tools.elemental_fire": "Fire",
   "enchantment.op-tools.elemental_water": "Water",
   "enchantment.op-tools.elemental_earth": "Earth",
+  "enchantment.op-tools.elemental_lightning": "Lightning",
+  "enchantment.op-tools.elemental_ice": "Ice",
 
   "itemGroup.op-tools": "OP Tools"
 }
