@@ -1,10 +1,10 @@
 {
   "description": {
-    "translate": "enchantment.op-tools.elemental_earth"
+    "translate": "enchantment.op-tools.elemental_ice"
   },
   "supported_items": "#minecraft:swords",
   "weight": 5,
-  "max_level": 3,
+  "max_level": 4,
   "min_cost": {
     "base": 1,
     "per_level_above_first": 2
@@ -24,7 +24,7 @@
         "affected": "victim",
         "effect": {
           "type": "op-tools:run_code",
-          "hook": "elemental_earth"
+          "hook": "elemental_ice"
         }
       }
     ]

@@ -2,6 +2,16 @@ package jaymanh.optools.Enchantments;
 
 import jaymanh.optools.OpTools;
 import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.effect.AllOfEnchantmentEffects;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.GoatEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.Identifier;
@@ -46,11 +56,22 @@ public class ElementalDamageEnchantments {
         });
 
         OpTools.register(Identifier.of("elemental_earth"), (world, level, context, user, pos) -> {
-
+            user.setVelocity(0,0,0);
+            user.setPos(user.getX(), user.getY() - (0.8 * level), user.getZ());
+            if(user instanceof MobEntity mob){
+                mob.getNavigation().stop();
+            }
         });
 
         OpTools.register(Identifier.of("elemental_lightning"), (world, level, context, user, pos) -> {
 
+        });
+
+        OpTools.register(Identifier.of("elemental_ice"), (world, level, context, user, pos) -> {
+            //I should probably make my own effect here so it can be a more gradual thing that builds up slowly and wears off slowly
+            if(user instanceof LivingEntity mob){
+                mob.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, level));
+            }
         });
     }
 }
