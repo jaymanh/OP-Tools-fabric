@@ -16,7 +16,7 @@ import net.minecraft.util.Rarity;
 
 public class ModTools {
     public static Item register(Item item, String id){
-         Identifier ItemID = Identifier.of(OpTools.MOD_ID, id);
+        Identifier ItemID = Identifier.of(OpTools.MOD_ID, id);
         return Registry.register(Registries.ITEM, ItemID, item);
     }
 
@@ -27,54 +27,44 @@ public class ModTools {
             .build();
 
     public static final Item DIAMONDIUM_SWORD = register(
-            new SwordItem(DiamondiumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.EPIC).fireproof()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(DiamondiumToolsMaterial.INSTANCE,12,0.6f))),
+            new SwordItem(ToolMaterials.DIAMONDIUM.getMaterial(),12,0.6f, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_sword"
     );
     public static final Item DIAMONDIUM_PICKAXE = register(
-            new PickaxeItem(DiamondiumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.EPIC).fireproof()
-                    .attributeModifiers(PickaxeItem.createAttributeModifiers(DiamondiumToolsMaterial.INSTANCE,5,0.2f))),
+            new PickaxeItem(ToolMaterials.DIAMONDIUM.getMaterial(),5,0.2f, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_pickaxe"
     );
     public static final Item DIAMONDIUM_AXE = register(
-            new AxeItem(DiamondiumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.EPIC).fireproof()
-                    .attributeModifiers(AxeItem.createAttributeModifiers(DiamondiumToolsMaterial.INSTANCE,15,0.4f))),
+            new AxeItem(ToolMaterials.DIAMONDIUM.getMaterial(),15,0.4f, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_axe"
     );
     public static final Item DIAMONDIUM_SHOVEL = register(
-            new ShovelItem(DiamondiumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.EPIC).fireproof()
-                    .attributeModifiers(ShovelItem.createAttributeModifiers(DiamondiumToolsMaterial.INSTANCE,8,0.5f))),
+            new ShovelItem(ToolMaterials.DIAMONDIUM.getMaterial(),8,0.5f, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_shovel"
     );
     public static final Item DIAMONDIUM_HOE = register(
-            new HoeItem(DiamondiumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.EPIC).fireproof()
-                    .attributeModifiers(HoeItem.createAttributeModifiers(DiamondiumToolsMaterial.INSTANCE,7,1f))),
+            new HoeItem(ToolMaterials.DIAMONDIUM.getMaterial(),7,1f, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
             "diamondium_hoe"
     );
 
     public static final Item DIAMONDILLIUM_SWORD = register(
-            new SwordItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
-                    .attributeModifiers(SwordItem.createAttributeModifiers(DiamondilliumToolsMaterial.INSTANCE,10,0.5f))),
+            new SwordItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),10,0.5f, new Item.Settings().rarity(Rarity.RARE).fireproof()),
             "diamondillium_sword"
     );
     public static final Item DIAMONDILLIUM_PICKAXE = register(
-            new PickaxeItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
-                    .attributeModifiers(PickaxeItem.createAttributeModifiers(DiamondilliumToolsMaterial.INSTANCE,5,0.2f))),
+            new PickaxeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),5,0.2f, new Item.Settings().rarity(Rarity.RARE).fireproof()),
             "diamondillium_pickaxe"
     );
     public static final Item DIAMONDILLIUM_AXE = register(
-            new AxeItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
-                    .attributeModifiers(AxeItem.createAttributeModifiers(DiamondilliumToolsMaterial.INSTANCE,15,0.4f))),
+            new AxeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),15,0.4f, new Item.Settings().rarity(Rarity.RARE).fireproof()),
             "diamondillium_axe"
     );
     public static final Item DIAMONDILLIUM_SHOVEL = register(
-            new ShovelItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
-                    .attributeModifiers(ShovelItem.createAttributeModifiers(DiamondilliumToolsMaterial.INSTANCE,8,0.5f))),
+            new ShovelItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),8,0.5f, new Item.Settings().rarity(Rarity.RARE).fireproof()),
             "diamondillium_shovel"
     );
     public static final Item DIAMONDILLIUM_HOE = register(
-            new HoeItem(DiamondilliumToolsMaterial.INSTANCE, new Item.Settings().rarity(Rarity.RARE).fireproof()
-                    .attributeModifiers(HoeItem.createAttributeModifiers(DiamondilliumToolsMaterial.INSTANCE,6,1f))),
+            new PickaxeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),6,1f, new Item.Settings().rarity(Rarity.RARE).fireproof()),
             "diamondillium_hoe"
     );
 

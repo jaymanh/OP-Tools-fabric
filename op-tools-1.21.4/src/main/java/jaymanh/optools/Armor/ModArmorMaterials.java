@@ -1,66 +1,40 @@
 package jaymanh.optools.Armor;
 
-import jaymanh.optools.Items.ModItems;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.item.equipment.ArmorMaterials;
+import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.EnumMap;
 
 import static jaymanh.optools.OpTools.MOD_ID;
+import static jaymanh.optools.Tools.TagKeys.ItemKeys.DIAMONDILLIUM_REPAIR_ITEMS;
 
-public class ModArmorMaterials {
-
-    public static RegistryEntry<ArmorMaterial> registerMaterial(String id, Map<ArmorItem.Type, Integer> defensePoints, int enchantability, RegistryEntry<SoundEvent> equipSound, Supplier<Ingredient> repairIngredientSupplier, float toughness, float knockbackResistance, boolean dyeable) {
-        List<ArmorMaterial.Layer> layers = List.of(
-                new ArmorMaterial.Layer(Identifier.of(MOD_ID, id), "", dyeable)
-        );
-        ArmorMaterial material = new ArmorMaterial(defensePoints, enchantability, equipSound, repairIngredientSupplier, layers, toughness, knockbackResistance);
-        material = Registry.register(Registries.ARMOR_MATERIAL, Identifier.of(MOD_ID, id), material);
-        return RegistryEntry.of(material);
-    }
+public class ModArmorMaterials implements ArmorMaterials {
 
     public static final int DIAMONDILLIUM_DURABILITY_MULTIPLIER = 256;
     public static final int DIAMONDIUM_DURABILITY_MULTIPLIER = 512;
 
-    public static final RegistryEntry<ArmorMaterial> DIAMONDILLIUM = registerMaterial("diamondillium",
-            Map.of(
-                    ArmorItem.Type.HELMET, 5,
-                    ArmorItem.Type.CHESTPLATE, 9,
-                    ArmorItem.Type.LEGGINGS, 7,
-                    ArmorItem.Type.BOOTS, 4
-            ),
-            24,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(ModItems.DIAMONDILLIUM_INGOT),
-            4.0F,
-            1.0F,
-            false);
 
-    public static final RegistryEntry<ArmorMaterial> DIAMONDIUM = registerMaterial("diamondium",
-            Map.of(
-                    ArmorItem.Type.HELMET, 7,
-                    ArmorItem.Type.CHESTPLATE, 15,
-                    ArmorItem.Type.LEGGINGS, 11,
-                    ArmorItem.Type.BOOTS, 6
-            ),
-            24,
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            () -> Ingredient.ofItems(ModItems.DIAMONDIUM_INGOT),
-            6.0F,
-            1.5F,
-            false);
+    public static final ArmorMaterial DIAMONDILLIUM = new ArmorMaterial(DIAMONDILLIUM_DURABILITY_MULTIPLIER, Util.make(new EnumMap(EquipmentType.class), map -> {
+        map.put(EquipmentType.BOOTS, 5);
+        map.put(EquipmentType.LEGGINGS, 9);
+        map.put(EquipmentType.CHESTPLATE, 7);
+        map.put(EquipmentType.HELMET, 4);
+    }), 24, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 4, 1, TagKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID,"diamondillium_repair_item")), CustomArmorModels.DIAMONDILLIUM);
 
+    public static final ArmorMaterial DIAMONDIUM = new ArmorMaterial(DIAMONDIUM_DURABILITY_MULTIPLIER, Util.make(new EnumMap(EquipmentType.class), map -> {
+        map.put(EquipmentType.BOOTS, 7);
+        map.put(EquipmentType.LEGGINGS, 15);
+        map.put(EquipmentType.CHESTPLATE, 11);
+        map.put(EquipmentType.HELMET, 6);
+    }), 24, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 6, 1.5f, DIAMONDILLIUM_REPAIR_ITEMS, CustomArmorModels.DIAMONDIUM);
 
-    public static void initialize(){
+    public static void initialise(){
 
     }
 }

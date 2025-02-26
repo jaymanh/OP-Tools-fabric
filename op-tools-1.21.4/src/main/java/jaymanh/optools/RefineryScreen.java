@@ -1,53 +1,74 @@
 package jaymanh.optools;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.text.Text;
+import jaymanh.optools.Armor.ModArmorMaterials;
+import jaymanh.optools.Armor.ModArmor;
+import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
+import jaymanh.optools.Blocks.ModBlocks;
+import jaymanh.optools.Enchantments.AutoRepairEnchantment;
+import jaymanh.optools.Enchantments.ElementalDamageEnchantments;
+import jaymanh.optools.Enchantments.ModEnchantmentsRunCode;
+import jaymanh.optools.Enchantments.TreeBreakerEnchantment;
+import jaymanh.optools.Foods.ModFoodItems;
+import jaymanh.optools.Fuels.ModFuels;
+import jaymanh.optools.GUI.Screen.ModScreenHandlers;
+import jaymanh.optools.Items.ModItems;
+import jaymanh.optools.Tools.ModTools;
+import jaymanh.optools.OreGen.ModOreGenerator;
+import net.fabricmc.api.ModInitializer;
+
+import net.minecraft.enchantment.EnchantmentEffectContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import static jaymanh.optools.OpTools.MOD_ID;
+import java.util.HashMap;
+import java.util.Map;
 
-public class RefineryScreen extends HandledScreen<RefineryScreenHandler> {
-    private static final Identifier TEXTURE = Identifier.of(MOD_ID, "textures/gui/refinery_gui.png");
+public class OpTools implements ModInitializer {
+    public static final String MOD_ID = "op-tools";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public RefineryScreen(RefineryScreenHandler handler, PlayerInventory inventory, Text title) {
-        super(handler, inventory, title);
+    private static final Map<Identifier, CodeRunner> registry = new HashMap<>();
+    public static void register(Identifier hook, CodeRunner code) {
+        registry.put(hook, code);
+    }
+
+    @FunctionalInterface
+    public interface CodeRunner {
+        void run(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos);
+    }
+    public static CodeRunner get(Identifier hook){
+        return registry.get(hook);
     }
 
     @Override
-    protected void init() {
-        super.init();
-        titleY = 10000;
-        playerInventoryTitleY = 10000;
-    }
+    public void onInitialize() {
+        // This code runs as soon as Minecraft is in a mod-load-ready state.
+        // However, some things (like resources) may still be uninitialized.
+        // Proceed with mild caution.
 
-    @Override
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-        RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - backgroundWidth) / 2;
-        int y = (height - backgroundHeight) / 2;
+        LOGGER.info("Loading %s".formatted(MOD_ID));
 
-        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.of(MOD_ID, "run_code"), ModEnchantmentsRunCode.CODEC);
 
-        renderProgressArrow(context, x, y);
-    }
+        ModArmorMaterials.initialise();
 
-    private void renderProgressArrow(DrawContext context, int x, int y) {
-        if(handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
-        }
-    }
-
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context, mouseX, mouseY, delta);
-        super.render(context, mouseX, mouseY, delta);
-        drawMouseoverTooltip(context, mouseX, mouseY);
+        ModTools.initialise();
+        ModArmor.initialise();
+        ModItems.initialise();
+        ModBlocks.initialize();
+        ModOreGenerator.initialise();
+        ModBlockEntitys.initialise();
+        ModScreenHandlers.registerScreenHandlers();
+        ModFoodItems.initialise();
+        ModFuels.initialize();
+        TreeBreakerEnchantment.initialise();
+        AutoRepairEnchantment.initialise();
+        ElementalDamageEnchantments.initialise();
     }
 }
