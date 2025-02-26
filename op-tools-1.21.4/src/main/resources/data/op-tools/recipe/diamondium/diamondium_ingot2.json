@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "op-tools:diamondium_block"
+        }
+    ],
+    "result": {
+        "id": "op-tools:diamondium_ingot",
+        "count": 9
+    },
+    "group": "diamondium_ingot"
+}

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "o",
+        "o",
+        "/"
+    ],
+    "key": {
+        "o": {
+            "item": "op-tools:diamondium_ingot"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "id": "op-tools:diamondium_sword",
+        "count": 1
+    }
+}
