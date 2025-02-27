@@ -5,13 +5,12 @@ import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 
-import static jaymanh.optools.Tools.ModTools.OP_TOOLS_ITEM_GROUP_KEY;
-import static jaymanh.optools.Tools.ModTools.register;
+import static jaymanh.optools.Tools.ModTools.*;
 
 public class ModFuels {
 
     public static final Item SUPER_FUEL = register(
-            new Item(new Item.Settings().rarity(Rarity.RARE)), "super_fuel"
+            new Item(new Item.Settings().rarity(Rarity.RARE).registryKey(key("super_fuel"))), "super_fuel"
     );
 
     public static void initialize(){
