@@ -9,13 +9,13 @@ import static net.minecraft.registry.tag.BlockTags.*;
 public enum ToolMaterials {
     DIAMONDILLIUM(
             new ToolMaterial(
-                    NEEDS_DIAMOND_TOOL, 4096, 20f, 8f, 30,
+                    INCORRECT_FOR_DIAMOND_TOOL, 4096, 20f, 8f, 30,
                     DIAMONDILLIUM_REPAIR_ITEMS
             )
     ),
     DIAMONDIUM(
             new ToolMaterial(
-                    NEEDS_DIAMOND_TOOL, 8192, 30f, 10f, 30,
+                    INCORRECT_FOR_DIAMOND_TOOL, 8192, 30f, 10f, 30,
                     DIAMONDIUM_REPAIR_ITEMS
             )
     );
