@@ -6,12 +6,8 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:moss_block"
-        },
-        "C": {
-            "item": "minecraft:charcoal"
-        }
+        "#": "minecraft:moss_block",
+        "C": "minecraft:charcoal"
     },
     "result": {
         "id": "op-tools:super_fuel",

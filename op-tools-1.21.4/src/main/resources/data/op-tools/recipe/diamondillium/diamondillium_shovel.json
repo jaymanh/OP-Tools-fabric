@@ -6,12 +6,8 @@
         "/"
     ],
     "key": {
-        "o": {
-            "item": "op-tools:diamondillium_ingot"
-        },
-        "/": {
-            "item": "minecraft:stick"
-        }
+        "o": "op-tools:diamondillium_ingot",
+        "/": "minecraft:stick"
     },
     "result": {
         "id": "op-tools:diamondillium_shovel",

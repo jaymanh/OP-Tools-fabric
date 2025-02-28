@@ -1,9 +1,7 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "op-tools:diamondium_block"
-        }
+        "op-tools:diamondium_block"
     ],
     "result": {
         "id": "op-tools:diamondium_ingot",

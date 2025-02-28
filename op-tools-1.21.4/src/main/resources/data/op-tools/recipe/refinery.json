@@ -6,12 +6,8 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:diamond"
-        },
-        "n": {
-            "item": "minecraft:netherite_ingot"
-        }
+        "#": "minecraft:diamond",
+        "n": "minecraft:netherite_ingot"
     },
     "result": {
         "id": "op-tools:refinery",

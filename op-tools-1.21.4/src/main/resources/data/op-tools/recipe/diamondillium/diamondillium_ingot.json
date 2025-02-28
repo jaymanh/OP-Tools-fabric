@@ -6,12 +6,8 @@
         "#n#"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:diamond"
-        },
-        "n": {
-            "item": "op-tools:refined_darkmatter"
-        }
+        "#": "minecraft:diamond",
+        "n": "op-tools:refined_darkmatter"
     },
     "result": {
         "id": "op-tools:diamondillium_ingot",

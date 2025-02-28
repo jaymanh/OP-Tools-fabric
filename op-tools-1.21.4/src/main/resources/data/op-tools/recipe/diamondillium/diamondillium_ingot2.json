@@ -1,9 +1,7 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "op-tools:diamondillium_block"
-        }
+        "op-tools:diamondillium_block"
     ],
     "result": {
         "id": "op-tools:diamondillium_ingot",
