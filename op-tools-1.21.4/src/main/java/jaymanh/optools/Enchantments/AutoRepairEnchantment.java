@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
 
-import static jaymanh.optools.OpTools.LOGGER;
+import static java.lang.Math.max;
 import static jaymanh.optools.OpTools.MOD_ID;
 
 public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
@@ -35,15 +35,16 @@ public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
             DynamicRegistryManager drm = world.getRegistryManager();
             Registry<Enchantment> reg = drm.getOrThrow(RegistryKeys.ENCHANTMENT);
             Optional<RegistryEntry<Enchantment>> optional = Optional.ofNullable(reg.getEntry(reg.get(AUTO_REPAIR)));
-
             RegistryEntry<Enchantment> auto_repair = optional.orElseThrow();
-            if (EnchantmentHelper.getLevel(auto_repair, itemStack) > 0) {
-                //LOGGER.info("Found item with enchantment in slot: " + i);
-                if(itemStack.isDamaged() && random.nextInt(100) == 0) {
+            int level = EnchantmentHelper.getLevel(auto_repair, itemStack);
+            if (level > 0) {
+                int chance = Math.max(level / 2, 1);
+                chance = Math.min(chance, 100);
+                if(itemStack.isDamaged() && random.nextInt(100 / chance) == 0) {
                     Consumer<Item> repairConsumer = item -> {
 
                     };
-                    itemStack.damage(-1, world, (ServerPlayerEntity) player, repairConsumer);
+                    itemStack.damage(-1 * level, world, (ServerPlayerEntity) player, repairConsumer);
                 }
             }
         }
