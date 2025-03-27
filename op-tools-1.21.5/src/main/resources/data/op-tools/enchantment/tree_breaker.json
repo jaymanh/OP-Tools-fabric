@@ -1,0 +1,30 @@
+{
+  "description": {
+    "translate": "enchantment.op-tools.tree_breaker"
+  },
+  "supported_items": "#minecraft:axes",
+  "weight": 5,
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 1
+  },
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 5
+  },
+  "anvil_cost": 2,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "minecraft:hit_block": [
+      {
+        "effect": {
+            "type": "op-tools:run_code",
+          "hook": "tree_breaker_hit"
+        }
+      }
+    ]
+  }
+}
