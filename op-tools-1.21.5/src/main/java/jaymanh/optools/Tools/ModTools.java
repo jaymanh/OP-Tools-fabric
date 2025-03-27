@@ -34,44 +34,44 @@ public class ModTools {
             .build();
 
     public static final Item DIAMONDIUM_SWORD = register(
-            new SwordItem(ToolMaterials.DIAMONDIUM.getMaterial(),12,0.6f, new Item.Settings().rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_sword"))),
+            new Item(new Item.Settings().sword(ToolMaterials.DIAMONDIUM.getMaterial(),12,0.6f).rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_sword"))),
             "diamondium_sword"
     );
     public static final Item DIAMONDIUM_PICKAXE = register(
-            new PickaxeItem(ToolMaterials.DIAMONDIUM.getMaterial(),5,0.2f, new Item.Settings().rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_pickaxe"))),
+            new Item(new Item.Settings().pickaxe(ToolMaterials.DIAMONDIUM.getMaterial(),5,0.2f).rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_pickaxe"))),
             "diamondium_pickaxe"
     );
     public static final Item DIAMONDIUM_AXE = register(
-            new AxeItem(ToolMaterials.DIAMONDIUM.getMaterial(),15,0.4f, new Item.Settings().rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_axe"))),
+            new Item(new Item.Settings().axe(ToolMaterials.DIAMONDIUM.getMaterial(),15,0.4f).rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_axe"))),
             "diamondium_axe"
     );
     public static final Item DIAMONDIUM_SHOVEL = register(
-            new ShovelItem(ToolMaterials.DIAMONDIUM.getMaterial(),8,0.5f, new Item.Settings().rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_shovel"))),
+            new Item(new Item.Settings().shovel(ToolMaterials.DIAMONDIUM.getMaterial(),8,0.5f).rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_shovel"))),
             "diamondium_shovel"
     );
     public static final Item DIAMONDIUM_HOE = register(
-            new HoeItem(ToolMaterials.DIAMONDIUM.getMaterial(),7,1f, new Item.Settings().rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_hoe"))),
+            new Item(new Item.Settings().hoe(ToolMaterials.DIAMONDIUM.getMaterial(),7,1f).rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_hoe"))),
             "diamondium_hoe"
     );
 
     public static final Item DIAMONDILLIUM_SWORD = register(
-            new SwordItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),10,0.5f, new Item.Settings().rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_sword"))),
+            new Item(new Item.Settings().sword(ToolMaterials.DIAMONDILLIUM.getMaterial(),10,0.5f).rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_sword"))),
             "diamondillium_sword"
     );
     public static final Item DIAMONDILLIUM_PICKAXE = register(
-            new PickaxeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),5,0.2f, new Item.Settings().rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_pickaxe"))),
+            new Item(new Item.Settings().pickaxe(ToolMaterials.DIAMONDILLIUM.getMaterial(),5,0.2f).rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_pickaxe"))),
             "diamondillium_pickaxe"
     );
     public static final Item DIAMONDILLIUM_AXE = register(
-            new AxeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),15,0.4f, new Item.Settings().rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_axe"))),
+            new Item(new Item.Settings().axe(ToolMaterials.DIAMONDILLIUM.getMaterial(),15,0.4f).rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_axe"))),
             "diamondillium_axe"
     );
     public static final Item DIAMONDILLIUM_SHOVEL = register(
-            new ShovelItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),8,0.5f, new Item.Settings().rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_shovel"))),
+            new Item(new Item.Settings().shovel(ToolMaterials.DIAMONDILLIUM.getMaterial(),8,0.5f).rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_shovel"))),
             "diamondillium_shovel"
     );
     public static final Item DIAMONDILLIUM_HOE = register(
-            new PickaxeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),6,1f, new Item.Settings().rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_hoe"))),
+            new Item(new Item.Settings().hoe(ToolMaterials.DIAMONDILLIUM.getMaterial(),6,1f).rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_hoe"))),
             "diamondillium_hoe"
     );
 

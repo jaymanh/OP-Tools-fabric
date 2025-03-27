@@ -90,7 +90,7 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
     public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
         super.readNbt(nbt, wrapper);
         Inventories.readNbt(nbt, inventory, wrapper);
-        progress = nbt.getInt("refinery.progress");
+        progress = nbt.getInt("refinery.progress",0);
     }
 
     @Override

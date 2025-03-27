@@ -9,6 +9,7 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
@@ -37,14 +38,14 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
     }
 
     @Override
-    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = world.getBlockEntity(pos);
+    public void onStateReplaced(BlockState state, ServerWorld serverWorld, BlockPos pos, boolean moved) {
+        if (state.getBlock() != serverWorld.getBlockState(pos).getBlock()){
+            BlockEntity blockEntity = serverWorld.getBlockEntity(pos);
             if(blockEntity instanceof RefineryBlockEntity){
-                ItemScatterer.spawn(world, pos, (RefineryBlockEntity)blockEntity);
-                world.updateComparators(pos, this);
+                ItemScatterer.spawn(serverWorld, pos, (RefineryBlockEntity)blockEntity);
+                serverWorld.updateComparators(pos, this);
             }
-            super.onStateReplaced(state, world, pos, newState, moved);
+            super.onStateReplaced(state, serverWorld, pos, moved);
         }
     }
 
