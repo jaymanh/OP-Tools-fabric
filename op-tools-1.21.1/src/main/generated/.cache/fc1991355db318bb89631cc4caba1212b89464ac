@@ -1,7 +1,7 @@
-// 1.21.1	2024-12-09T13:31:13.673751	OP Tools/Tags for minecraft:item
+// 1.21.1	2025-04-01T12:45:05.1303542	OP Tools/Tags for minecraft:item
 06d6caae6ddd2520e5bea7af76c822b8006c9101 data\minecraft\tags\item\beacon_payment_items.json
-0b46027b2bf24de58a2205d9868bbe99392b58cd data\minecraft\tags\item\axes.json
 3f7c3fe39e7bb8895301739937363ef9fdf5c8ed data\minecraft\tags\item\foot_armor.json
+0b46027b2bf24de58a2205d9868bbe99392b58cd data\minecraft\tags\item\axes.json
 23ca3351683bb1a2b4f16f97a048305dfb2fe340 data\minecraft\tags\item\chest_armor.json
 83e66c995659a622c75cb13e2bf5fb3b14b47cbf data\minecraft\tags\item\swords.json
 98ca5fc1e0d60c9eee818e976595222071a2a48e data\minecraft\tags\item\leg_armor.json
