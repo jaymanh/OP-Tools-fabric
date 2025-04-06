@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.entity.Entity;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -75,15 +76,15 @@ public class TreeBreakerEnchantment {
 
     public static void initialise(){
         OpTools.register(Identifier.of("tree_breaker_hit"), (world, level, context, user, pos) -> {
-            BlockPos blockPos = new BlockPos((int)pos.x, (int)pos.y,(int)pos.z);
+            BlockPos blockPos = new BlockPos(
+                    (int)Math.floor(pos.x),
+                    (int)Math.floor(pos.y),
+                    (int)Math.floor(pos.z)
+            );
             //LOGGER.info(world.getBlockState(blockPos).toString());
 
-            if(world.getBlockState(blockPos).getBlock() == Blocks.OAK_LOG || world.getBlockState(blockPos).getBlock() == Blocks.SPRUCE_LOG
-            || world.getBlockState(blockPos).getBlock() == Blocks.BIRCH_LOG || world.getBlockState(blockPos).getBlock() == Blocks.DARK_OAK_LOG
-                    || world.getBlockState(blockPos).getBlock() == Blocks.ACACIA_LOG || world.getBlockState(blockPos).getBlock() == Blocks.CHERRY_LOG
-                    || world.getBlockState(blockPos).getBlock() == Blocks.JUNGLE_LOG || world.getBlockState(blockPos).getBlock() == Blocks.MANGROVE_LOG
-                    || world.getBlockState(blockPos).getBlock() == Blocks.WARPED_HYPHAE || world.getBlockState(blockPos).getBlock() == Blocks.CRIMSON_HYPHAE
-            ){
+            if(world.getBlockState(blockPos).isIn(BlockTags.LOGS))
+            {
                 BreakTrees(blockPos, world.getBlockState(blockPos).getBlock(), world, level, context, user);
             }
 
