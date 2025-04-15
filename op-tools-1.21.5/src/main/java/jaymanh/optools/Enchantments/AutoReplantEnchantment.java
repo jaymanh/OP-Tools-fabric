@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -25,11 +26,14 @@ public class AutoReplantEnchantment{
     private static final Map<Block, Item> blockToItemMap = new HashMap<>();
 
     static {
+        blockToItemMap.put(Blocks.WHEAT, Items.WHEAT_SEEDS);
         blockToItemMap.put(Blocks.CARROTS, Items.CARROT);
         blockToItemMap.put(Blocks.POTATOES, Items.POTATO);
         blockToItemMap.put(Blocks.BEETROOTS, Items.BEETROOT_SEEDS);
+        blockToItemMap.put(Blocks.MELON_STEM, Items.MELON_SEEDS);
+        blockToItemMap.put(Blocks.PUMPKIN_STEM, Items.PUMPKIN_SEEDS);
         blockToItemMap.put(Blocks.NETHER_WART, Items.NETHER_WART);
-        blockToItemMap.put(Blocks.WHEAT, Items.WHEAT_SEEDS);
+        blockToItemMap.put(Blocks.COCOA, Items.COCOA_BEANS);
     }
 
     private static void ReplantCrop(BlockPos blockPos, Block blockType, World world, int level, EnchantmentEffectContext context, Entity user) {
@@ -52,12 +56,15 @@ public class AutoReplantEnchantment{
 
     public static void initialise() {
         OpTools.register(Identifier.of("crop_break"), (world, level, context, user, pos) -> {
-            BlockPos blockPos = new BlockPos((int) pos.x, (int) pos.y, (int) pos.z);
+            BlockPos blockPos = new BlockPos(
+                    (int)Math.floor(pos.x),
+                    (int)Math.floor(pos.y),
+                    (int)Math.floor(pos.z)
+            );
+
             Block block = world.getBlockState(blockPos).getBlock();
 
-            if (block == Blocks.CARROTS || block == Blocks.POTATOES ||
-                    block == Blocks.BEETROOTS || block == Blocks.NETHER_WART ||
-                    block == Blocks.WHEAT) {
+            if (world.getBlockState(blockPos).isIn(BlockTags.CROPS)) {
 
                 ServerWorld serverWorld = (ServerWorld) world;
 
