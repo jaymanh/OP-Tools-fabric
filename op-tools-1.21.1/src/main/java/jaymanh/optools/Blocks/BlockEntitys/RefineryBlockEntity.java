@@ -6,10 +6,11 @@ import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import jaymanh.optools.Items.ModItems;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -20,19 +21,21 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 
-import static jaymanh.optools.OpTools.LOGGER;
-
-public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory {
+public class RefineryBlockEntity extends LockableContainerBlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory, SidedInventory {
 
 
     private final  DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
+    private static final int[] TOP_SLOTS = new int[]{0};
+    private static final int[] BOTTOM_SLOTS = new int[]{1, 1};
+    private static final int[] SIDE_SLOTS = new int[]{0};
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -65,16 +68,9 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
         };
     }
 
-    public ItemStack getRenderStack() {
-        if(this.getStack(OUTPUT_SLOT).isEmpty()) {
-            return this.getStack(INPUT_SLOT);
-        } else {
-            return this.getStack(OUTPUT_SLOT);
-        }
-    }
-
     @Override
     public void markDirty() {
+        assert world != null;
         world.updateListeners(pos, getCachedState(), getCachedState(), 3);
         super.markDirty();
     }
@@ -103,10 +99,30 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
         return Text.translatable("block.op-tools.refinery");
     }
 
+    @Override
+    protected Text getContainerName() {
+        return this.getDisplayName();
+    }
+
+    @Override
+    protected DefaultedList<ItemStack> getHeldStacks() {
+        return this.inventory;
+    }
+
+    @Override
+    protected void setHeldStacks(DefaultedList<ItemStack> inventory) {
+
+    }
+
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new RefineryScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    }
+
+    @Override
+    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return null;
     }
 
     private void resetProgress() {
@@ -137,6 +153,13 @@ public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHa
         }
     }
 
+    public int[] getAvailableSlots(Direction side) {
+        if (side == Direction.DOWN) {
+            return BOTTOM_SLOTS;
+        } else {
+            return side == Direction.UP ? TOP_SLOTS : SIDE_SLOTS;
+        }
+    }
 
     private void craftItem() {
         this.removeStack(INPUT_SLOT, 1);
