@@ -17,7 +17,7 @@ public class DiamondiumToolsMaterial implements ToolMaterial {
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return 30f;
+        return 40f;
     }
 
     @Override
