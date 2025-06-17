@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ooo",
+        "o o"
+    ],
+    "key": {
+        "o": "op-tools:diamondium_ingot"
+    },
+    "result": {
+        "id": "op-tools:diamondium_helmet",
+        "count": 1
+    }
+}
