@@ -77,22 +77,6 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
         super.markDirty();
     }
 
-    /*
-    @Override
-    protected void writeData(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
-        super.writeData(nbt, wrapper);
-        Inventories.writeData(nbt, inventory, wrapper);
-        nbt.putInt("refinery.progress", progress);
-    }
-
-    @Override
-    public void readData(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
-        super.readData(nbt, wrapper);
-        Inventories.readData(nbt, inventory, wrapper);
-        progress = nbt.getInt("refinery.progress",0);
-    }
-     */
-
     @Override
     protected void writeData(WriteView writeView) {
         super.writeData(writeView);
