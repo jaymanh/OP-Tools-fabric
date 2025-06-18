@@ -1,5 +1,6 @@
 package jaymanh.optools;
 
+import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.render.RenderLayer;
 import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import net.minecraft.client.gui.DrawContext;
@@ -29,13 +30,13 @@ public class RefineryScreen extends HandledScreen<RefineryScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
 
-        context.drawTexture(RenderLayer::getGuiTextured,TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight,256,256);
+        context.drawTexture(RenderPipelines.GUI_TEXTURED,TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight,256,256);
         renderProgressArrow(context, x, y);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.isCrafting()) {
-            context.drawTexture(RenderLayer::getGuiTextured, TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress(),256,256);
+            context.drawTexture(RenderPipelines.GUI_TEXTURED, TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress(),256,256);
         }
     }
 

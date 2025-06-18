@@ -19,40 +19,40 @@ public class OpToolsModEnchantTagProvider extends EnchantmentTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
         this.builder(EnchantmentTags.IN_ENCHANTING_TABLE)
-                .add(ModEnchantments.AUTO_REPAIR)
-                .add(ModEnchantments.AUTO_REPLANT)
-                .add(ModEnchantments.ELEMENTAL_EARTH)
-                .add(ModEnchantments.ELEMENTAL_FIRE)
-                .add(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .add(ModEnchantments.ELEMENTAL_WATER)
-                .add(ModEnchantments.TREE_BREAKER);
+                .addOptional(ModEnchantments.AUTO_REPAIR)
+                .addOptional(ModEnchantments.AUTO_REPLANT)
+                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
+                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
+                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
+                .addOptional(ModEnchantments.ELEMENTAL_WATER)
+                .addOptional(ModEnchantments.TREE_BREAKER);
 
         this.builder(EnchantmentTags.ON_TRADED_EQUIPMENT)
-                .add(ModEnchantments.AUTO_REPAIR)
-                .add(ModEnchantments.AUTO_REPLANT)
-                .add(ModEnchantments.ELEMENTAL_EARTH)
-                .add(ModEnchantments.ELEMENTAL_FIRE)
-                .add(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .add(ModEnchantments.ELEMENTAL_WATER)
-                .add(ModEnchantments.TREE_BREAKER);
+                .addOptional(ModEnchantments.AUTO_REPAIR)
+                .addOptional(ModEnchantments.AUTO_REPLANT)
+                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
+                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
+                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
+                .addOptional(ModEnchantments.ELEMENTAL_WATER)
+                .addOptional(ModEnchantments.TREE_BREAKER);
 
         this.builder(EnchantmentTags.NON_TREASURE)
-                .add(ModEnchantments.AUTO_REPAIR)
-                .add(ModEnchantments.AUTO_REPLANT)
-                .add(ModEnchantments.ELEMENTAL_EARTH)
-                .add(ModEnchantments.ELEMENTAL_FIRE)
-                .add(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .add(ModEnchantments.ELEMENTAL_WATER)
-                .add(ModEnchantments.TREE_BREAKER);
+                .addOptional(ModEnchantments.AUTO_REPAIR)
+                .addOptional(ModEnchantments.AUTO_REPLANT)
+                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
+                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
+                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
+                .addOptional(ModEnchantments.ELEMENTAL_WATER)
+                .addOptional(ModEnchantments.TREE_BREAKER);
 
         this.builder(EnchantmentTags.IN_ENCHANTING_TABLE)
-                .add(ModEnchantments.AUTO_REPAIR)
-                .add(ModEnchantments.AUTO_REPLANT)
-                .add(ModEnchantments.ELEMENTAL_EARTH)
-                .add(ModEnchantments.ELEMENTAL_FIRE)
-                .add(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .add(ModEnchantments.ELEMENTAL_WATER)
-                .add(ModEnchantments.TREE_BREAKER)
-                .add(Enchantments.MENDING);
+                .addOptional(ModEnchantments.AUTO_REPAIR)
+                .addOptional(ModEnchantments.AUTO_REPLANT)
+                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
+                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
+                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
+                .addOptional(ModEnchantments.ELEMENTAL_WATER)
+                .addOptional(ModEnchantments.TREE_BREAKER)
+                .addOptional(Enchantments.MENDING);
     }
 }
