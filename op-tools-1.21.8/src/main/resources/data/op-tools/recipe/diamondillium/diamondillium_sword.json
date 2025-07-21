@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "o",
+        "o",
+        "/"
+    ],
+    "key": {
+        "o": "op-tools:diamondillium_ingot",
+        "/": "minecraft:stick"
+    },
+    "result": {
+        "id": "op-tools:diamondillium_sword",
+        "count": 1
+    }
+}
