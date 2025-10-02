@@ -17,7 +17,7 @@ public class RefineryScreenHandler extends ScreenHandler {
     public final RefineryBlockEntity blockEntity;
 
     public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPosPayload payload) {
-        this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(payload.pos()),
+        this(syncId, playerInventory, playerInventory.player.getEntityWorld().getBlockEntity(payload.pos()),
                 new ArrayPropertyDelegate(2));
     }
 
