@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        "op-tools:diamondillium_block"
+    ],
+    "result": {
+        "id": "op-tools:diamondillium_ingot",
+        "count": 9
+    },
+    "group": "diamondillium_ingot"
+}
