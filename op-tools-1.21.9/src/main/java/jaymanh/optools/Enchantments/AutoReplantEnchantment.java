@@ -36,17 +36,14 @@ public class AutoReplantEnchantment{
         blockToItemMap.put(Blocks.COCOA, Items.COCOA_BEANS);
     }
 
-    private static void ReplantCrop(BlockPos blockPos, Block blockType, World world, int level, EnchantmentEffectContext context, Entity user) {
+    private static void ReplantCrop(BlockPos blockPos, Block blockType, ServerWorld world, int level, EnchantmentEffectContext context, Entity user) {
 
         Item item = blockToItemMap.get(blockType);
-
         if(item != null) {
-
             PlayerEntity player = (PlayerEntity) user;
             ItemStack itemStack = new ItemStack(item);
 
             if(hasItemInInventory(player, itemStack)){
-
                 int itemSlot = findItemSlot(player, itemStack);
                 removeItemInInventory(player, itemSlot);
                 world.setBlockState(blockPos, blockType.getDefaultState());
@@ -65,10 +62,7 @@ public class AutoReplantEnchantment{
             Block block = world.getBlockState(blockPos).getBlock();
 
             if (world.getBlockState(blockPos).isIn(BlockTags.CROPS)) {
-
-                ServerWorld serverWorld = (ServerWorld) world;
-
-                serverWorld.getServer().execute(() -> {
+                ((ServerWorld) world).getServer().execute(() -> {
                     ReplantCrop(blockPos, block, world, level, context, user);
                 });
             }
