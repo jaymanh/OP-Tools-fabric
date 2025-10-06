@@ -15,15 +15,21 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static jaymanh.optools.OpTools.LOGGER;
 import static jaymanh.optools.Enchantments.InventoryHelper.*;
 
-public class AutoReplantEnchantment{
+public class AutoReplantEnchantment {
 
     private static final Map<Block, Item> blockToItemMap = new HashMap<>();
+
+    private static final List<ReplantTask> replantTasks = new ArrayList<>();
+
+    static record ReplantTask(ServerWorld world, BlockPos pos, Block block) {}
 
     static {
         blockToItemMap.put(Blocks.WHEAT, Items.WHEAT_SEEDS);
@@ -36,17 +42,16 @@ public class AutoReplantEnchantment{
         blockToItemMap.put(Blocks.COCOA, Items.COCOA_BEANS);
     }
 
-    private static void ReplantCrop(BlockPos blockPos, Block blockType, ServerWorld world, int level, EnchantmentEffectContext context, Entity user) {
-
+    private static void scheduleReplant(BlockPos blockPos, Block blockType, ServerWorld world, int level, EnchantmentEffectContext context, Entity user) {
         Item item = blockToItemMap.get(blockType);
-        if(item != null) {
+        if (item != null) {
             PlayerEntity player = (PlayerEntity) user;
             ItemStack itemStack = new ItemStack(item);
 
-            if(hasItemInInventory(player, itemStack)){
+            if (hasItemInInventory(player, itemStack)) {
                 int itemSlot = findItemSlot(player, itemStack);
                 removeItemInInventory(player, itemSlot);
-                world.setBlockState(blockPos, blockType.getDefaultState());
+                replantTasks.add(new ReplantTask(world, blockPos, blockType));
             }
         }
     }
@@ -54,18 +59,22 @@ public class AutoReplantEnchantment{
     public static void initialise() {
         OpTools.register(Identifier.of("crop_break"), (world, level, context, user, pos) -> {
             BlockPos blockPos = new BlockPos(
-                    (int)Math.floor(pos.x),
-                    (int)Math.floor(pos.y),
-                    (int)Math.floor(pos.z)
+                    (int) Math.floor(pos.x),
+                    (int) Math.floor(pos.y),
+                    (int) Math.floor(pos.z)
             );
 
             Block block = world.getBlockState(blockPos).getBlock();
 
             if (world.getBlockState(blockPos).isIn(BlockTags.CROPS)) {
                 ((ServerWorld) world).getServer().execute(() -> {
-                    ReplantCrop(blockPos, block, world, level, context, user);
+                    scheduleReplant(blockPos, block, (ServerWorld) world, level, context, user);
                 });
             }
         });
+    }
+
+    public static List<ReplantTask> getReplantTasks() {
+        return replantTasks;
     }
 }
