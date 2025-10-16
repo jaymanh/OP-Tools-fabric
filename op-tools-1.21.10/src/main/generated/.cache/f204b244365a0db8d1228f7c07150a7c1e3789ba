@@ -1,0 +1,4 @@
+// 1.21.6	-999999999-01-01T00:00:00	OP Tools/Tags for minecraft:enchantment
+d7087102ddb8c85eeed98f44d540770e4f16ffdc data/minecraft/tags/enchantment/in_enchanting_table.json
+d53a2d6bfab18822a977c57d7d92216b8ef1f98a data/minecraft/tags/enchantment/non_treasure.json
+d53a2d6bfab18822a977c57d7d92216b8ef1f98a data/minecraft/tags/enchantment/on_traded_equipment.json
