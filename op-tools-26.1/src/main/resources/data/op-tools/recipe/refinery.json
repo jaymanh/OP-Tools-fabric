@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#n#",
+        "###"
+    ],
+    "key": {
+        "#": "minecraft:diamond",
+        "n": "minecraft:netherite_ingot"
+    },
+    "result": {
+        "id": "op-tools:refinery",
+        "count": 1
+    }
+}

@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "op-tools",
+	"version": "1.8.2",
+	"name": "OP Tools",
+	"description": "This is a basic mod that adds op tools to survival",
+	"authors": [
+		"Jaymanh"
+	],
+	"contact": {
+		"homepage": "https://github.com/jaymanh/OP-Tools-fabric",
+		"sources": "https://github.com/jaymanh/OP-Tools-fabric"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/op-tools/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"jaymanh.optools.OpTools"
+		],
+		"client": [
+			"jaymanh.optools.OpToolsClient"
+		],
+		"fabric-datagen": [
+			"jaymanh.optools.OpToolsDataGenerator"
+		]
+	},
+	"mixins": [
+		"op-tools.mixins.json",
+		{
+			"config": "op-tools.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

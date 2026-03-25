@@ -1,0 +1,26 @@
+package jaymanh.optools.Fuels;
+
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+
+import static jaymanh.optools.Tools.ModTools.*;
+
+public class ModFuels {
+
+    public static final Item SUPER_FUEL = register(
+            new Item(new Item.Properties().rarity(Rarity.RARE).setId(key("super_fuel"))), "super_fuel"
+    );
+
+    public static void initialize(){
+
+        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.accept(SUPER_FUEL);
+        });
+
+        FuelRegistryEvents.BUILD.register(((builder, context) -> {
+            builder.add(ModFuels.SUPER_FUEL, 20 * 640);
+        }));
+    }
+}
