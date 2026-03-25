@@ -52,12 +52,6 @@ public class ModTools {
             new HoeItem(ToolMaterials.DIAMONDIUM.getMaterial(),7,1f, new Item.Properties().rarity(Rarity.EPIC).fireResistant().setId(key("diamondium_hoe"))),
             "diamondium_hoe"
     );
-    /*
-    public static final Item DIAMONDIUM_HOE = register(
-            new Item(new Item.Settings().hoe(ToolMaterials.DIAMONDIUM.getMaterial(),7,1f).rarity(Rarity.EPIC).fireproof().registryKey(key("diamondium_hoe"))),
-            "diamondium_hoe"
-    );
-     */
 
     public static final Item DIAMONDILLIUM_SWORD = register(
             new Item(new Item.Properties().sword(ToolMaterials.DIAMONDILLIUM.getMaterial(),10,0.5f).rarity(Rarity.RARE).fireResistant().setId(key("diamondillium_sword"))),
@@ -80,12 +74,6 @@ public class ModTools {
             new HoeItem(ToolMaterials.DIAMONDILLIUM.getMaterial(),6,1f, new Item.Properties().rarity(Rarity.RARE).fireResistant().setId(key("diamondillium_hoe"))),
             "diamondillium_hoe"
     );
-    /*
-    public static final Item DIAMONDILLIUM_HOE = register(
-            new Item(new Item.Settings().hoe(ToolMaterials.DIAMONDILLIUM.getMaterial(),6,1f).rarity(Rarity.RARE).fireproof().registryKey(key("diamondillium_hoe"))),
-            "diamondillium_hoe"
-    );
-     */
 
 
     public static void initialise(){
