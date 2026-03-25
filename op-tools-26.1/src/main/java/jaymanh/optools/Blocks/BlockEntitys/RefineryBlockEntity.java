@@ -90,11 +90,6 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
     }
 
     @Override
-    public NonNullList<ItemStack> getItems() {
-        return inventory;
-    }
-
-    @Override
     public Component getDisplayName() {
         return Component.translatable("block.op-tools.refinery");
     }
@@ -105,7 +100,7 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
     }
 
     @Override
-    protected NonNullList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return this.inventory;
     }
 
