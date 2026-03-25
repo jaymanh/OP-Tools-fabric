@@ -1,6 +1,5 @@
 package jaymanh.optools.Armor;
 
-import java.util.function.BiConsumer;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
