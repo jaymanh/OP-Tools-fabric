@@ -1,7 +1,7 @@
 package jaymanh.optools.Fuels;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -19,7 +19,7 @@ public class ModFuels {
             event.accept(SUPER_FUEL);
         });
 
-        FuelRegistryEvents.BUILD.register(((builder, context) -> {
+        FuelValueEvents.BUILD.register(((builder, context) -> {
             builder.add(ModFuels.SUPER_FUEL, 20 * 640);
         }));
     }

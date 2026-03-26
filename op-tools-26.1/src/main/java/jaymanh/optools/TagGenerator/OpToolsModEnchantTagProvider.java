@@ -1,7 +1,7 @@
 package jaymanh.optools.TagGenerator;
 
 import jaymanh.optools.Enchantments.ModEnchantments;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.EnchantmentTagsProvider;
 import net.minecraft.tags.EnchantmentTags;
@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 public class OpToolsModEnchantTagProvider extends EnchantmentTagsProvider {
-    public OpToolsModEnchantTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public OpToolsModEnchantTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 

@@ -4,14 +4,14 @@ import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Foods.ModFoodItems;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
-public class OpToolsModItemTagProvider extends FabricTagProvider.ItemTagProvider {
-    public OpToolsModItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+public class OpToolsModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
+    public OpToolsModItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
