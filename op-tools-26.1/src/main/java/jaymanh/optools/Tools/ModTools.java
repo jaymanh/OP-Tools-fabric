@@ -1,7 +1,7 @@
 package jaymanh.optools.Tools;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -27,7 +27,7 @@ public class ModTools {
     }
 
     public static final ResourceKey<CreativeModeTab> OP_TOOLS_ITEM_GROUP_KEY = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(MOD_ID,"op-tools"));
-    public static final CreativeModeTab OP_TOOLS_ITEM_GROUP = FabricItemGroup.builder()
+    public static final CreativeModeTab OP_TOOLS_ITEM_GROUP = FabricCreativeModeTab.builder()
             .icon(() -> new ItemStack(ModTools.DIAMONDIUM_SWORD))
             .title(Component.translatable("itemGroup.op-tools"))
             .build();
@@ -78,18 +78,18 @@ public class ModTools {
 
     public static void initialise(){
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, OP_TOOLS_ITEM_GROUP_KEY, OP_TOOLS_ITEM_GROUP);
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register((itemGroup) -> {
-            itemGroup.accept(ModTools.DIAMONDILLIUM_SWORD);
-            itemGroup.accept(ModTools.DIAMONDILLIUM_PICKAXE);
-            itemGroup.accept(ModTools.DIAMONDILLIUM_AXE);
-            itemGroup.accept(ModTools.DIAMONDILLIUM_SHOVEL);
-            itemGroup.accept(ModTools.DIAMONDILLIUM_HOE);
+        CreativeModeTabEvents.modifyOutputEvent(OP_TOOLS_ITEM_GROUP_KEY).register((entries) -> {
+            entries.accept(ModTools.DIAMONDILLIUM_SWORD);
+            entries.accept(ModTools.DIAMONDILLIUM_PICKAXE);
+            entries.accept(ModTools.DIAMONDILLIUM_AXE);
+            entries.accept(ModTools.DIAMONDILLIUM_SHOVEL);
+            entries.accept(ModTools.DIAMONDILLIUM_HOE);
 
-            itemGroup.accept(ModTools.DIAMONDIUM_SWORD);
-            itemGroup.accept(ModTools.DIAMONDIUM_PICKAXE);
-            itemGroup.accept(ModTools.DIAMONDIUM_AXE);
-            itemGroup.accept(ModTools.DIAMONDIUM_SHOVEL);
-            itemGroup.accept(ModTools.DIAMONDIUM_HOE);
+            entries.accept(ModTools.DIAMONDIUM_SWORD);
+            entries.accept(ModTools.DIAMONDIUM_PICKAXE);
+            entries.accept(ModTools.DIAMONDIUM_AXE);
+            entries.accept(ModTools.DIAMONDIUM_SHOVEL);
+            entries.accept(ModTools.DIAMONDIUM_HOE);
         });
     }
 }

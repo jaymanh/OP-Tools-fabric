@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 import static java.lang.Math.max;
 import static jaymanh.optools.OpTools.MOD_ID;
 
-public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
+public class AutoRepairEnchantment implements ServerTickEvents.EndLevelTick {
     private static final Random random = new Random();
     public static final ResourceKey<Enchantment> AUTO_REPAIR = ResourceKey.create(Registries.ENCHANTMENT, Identifier.fromNamespaceAndPath(MOD_ID, "auto_repair"));
 
@@ -53,6 +53,6 @@ public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
     }
 
     public static void initialise() {
-        ServerTickEvents.END_WORLD_TICK.register(new AutoRepairEnchantment());
+        ServerTickEvents.END_LEVEL_TICK.register(new AutoRepairEnchantment());
     }
 }

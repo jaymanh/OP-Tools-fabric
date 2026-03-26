@@ -4,7 +4,7 @@ import jaymanh.optools.GUI.ImplementedInventory;
 import jaymanh.optools.GUI.Screen.BlockPosPayload;
 import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import jaymanh.optools.Items.ModItems;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -26,7 +26,7 @@ import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
 
 
-public class RefineryBlockEntity extends BaseContainerBlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory, WorldlyContainer {
+public class RefineryBlockEntity extends BaseContainerBlockEntity implements ExtendedMenuProvider<BlockPosPayload>, ImplementedInventory, WorldlyContainer {
 
 
     private final  NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);

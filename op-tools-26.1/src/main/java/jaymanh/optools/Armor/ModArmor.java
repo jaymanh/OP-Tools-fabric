@@ -1,6 +1,6 @@
 package jaymanh.optools.Armor;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -22,16 +22,16 @@ public class ModArmor {
 
     public static void initialise(){
 
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.accept(DIAMONDIUM_HELMET);
-            itemGroup.accept(DIAMONDIUM_CHESTPLATE);
-            itemGroup.accept(DIAMONDIUM_LEGGINGS);
-            itemGroup.accept(DIAMONDIUM_BOOTS);
+        CreativeModeTabEvents.modifyOutputEvent(OP_TOOLS_ITEM_GROUP_KEY).register(event -> {
+            event.accept(DIAMONDIUM_HELMET);
+            event.accept(DIAMONDIUM_CHESTPLATE);
+            event.accept(DIAMONDIUM_LEGGINGS);
+            event.accept(DIAMONDIUM_BOOTS);
 
-            itemGroup.accept(DIAMONDILLIUM_HELMET);
-            itemGroup.accept(DIAMONDILLIUM_CHESTPLATE);
-            itemGroup.accept(DIAMONDILLIUM_LEGGINGS);
-            itemGroup.accept(DIAMONDILLIUM_BOOTS);
+            event.accept(DIAMONDILLIUM_HELMET);
+            event.accept(DIAMONDILLIUM_CHESTPLATE);
+            event.accept(DIAMONDILLIUM_LEGGINGS);
+            event.accept(DIAMONDILLIUM_BOOTS);
 
         });
     }

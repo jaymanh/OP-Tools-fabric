@@ -1,6 +1,6 @@
 package jaymanh.optools.Items;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -14,12 +14,11 @@ public class ModItems {
     public static final Item REFINED_DARKMATTER = register(new Item(new Item.Properties().rarity(Rarity.UNCOMMON).setId(key("refined_darkmatter"))), "refined_darkmatter");
 
     public static void initialise(){
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
-
-            itemGroup.accept(DIAMONDIUM_INGOT);
-            itemGroup.accept(DIAMONDILLIUM_INGOT);
-            itemGroup.accept(RAW_DARKMATTER);
-            itemGroup.accept(REFINED_DARKMATTER);
+        CreativeModeTabEvents.modifyOutputEvent(OP_TOOLS_ITEM_GROUP_KEY).register(entries -> {  // note: parameter name is arbitrary
+            entries.accept(DIAMONDIUM_INGOT);
+            entries.accept(DIAMONDILLIUM_INGOT);
+            entries.accept(RAW_DARKMATTER);
+            entries.accept(REFINED_DARKMATTER);
         });
     }
 }

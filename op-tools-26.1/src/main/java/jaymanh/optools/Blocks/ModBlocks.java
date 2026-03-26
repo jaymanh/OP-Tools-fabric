@@ -2,7 +2,7 @@ package jaymanh.optools.Blocks;
 
 import jaymanh.optools.Blocks.CustomBlockTypes.RefineryBlock;
 import jaymanh.optools.Tools.ModTools;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -63,12 +63,12 @@ public class ModBlocks {
 
     public static void initialize(){
 
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.accept(ModBlocks.DIAMONDIUM_BLOCK.asItem());
-            itemGroup.accept(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
-            itemGroup.accept(ModBlocks.STONE_DARKMATTER_ORE.asItem());
-            itemGroup.accept(ModBlocks.DEEPSLATE_DARKMATTER_ORE.asItem());
-            itemGroup.accept(ModBlocks.REFINERY.asItem());
+        CreativeModeTabEvents.modifyOutputEvent(OP_TOOLS_ITEM_GROUP_KEY).register(event -> {
+            event.accept(ModBlocks.DIAMONDIUM_BLOCK.asItem());
+            event.accept(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
+            event.accept(ModBlocks.STONE_DARKMATTER_ORE.asItem());
+            event.accept(ModBlocks.DEEPSLATE_DARKMATTER_ORE.asItem());
+            event.accept(ModBlocks.REFINERY.asItem());
         });
     }
 }

@@ -1,7 +1,7 @@
 package jaymanh.optools.Foods;
 
 import jaymanh.optools.OpTools;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -17,8 +17,8 @@ public class ModFoodItems {
             "super_meat");
 
     public static void initialise(){
-        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register((ItemGroup) -> {
-            ItemGroup.accept(SUPER_MEAT);
+        CreativeModeTabEvents.modifyOutputEvent(OP_TOOLS_ITEM_GROUP_KEY).register((event) -> {
+            event.accept(SUPER_MEAT);
         });
     }
 }

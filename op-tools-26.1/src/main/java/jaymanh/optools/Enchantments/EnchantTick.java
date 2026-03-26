@@ -14,16 +14,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class EnchantTick implements ServerTickEvents.EndWorldTick {
+public class EnchantTick implements ServerTickEvents.EndLevelTick {
     public static void initialise() {
-        ServerTickEvents.END_WORLD_TICK.register(new EnchantTick());
+        ServerTickEvents.END_LEVEL_TICK.register(new EnchantTick());
     }
 
     @Override
     public void onEndTick(ServerLevel world) {
         List<? extends LivingEntity> entitiesList = world.getEntities(EntityTypeTest.forClass(LivingEntity.class), EntitySelector.ENTITY_STILL_ALIVE);
         for (Entity entity : entitiesList) {
-            Set<String> tags = new HashSet<>(entity.getTags());
+            Set<String> tags = new HashSet<>(entity.entityTags());
             for (String cTag : tags) {
                 if (Objects.equals(cTag, "Gravity")) {
                     for (String cTags : tags) {

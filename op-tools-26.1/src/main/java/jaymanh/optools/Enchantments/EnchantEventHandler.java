@@ -5,10 +5,10 @@ import net.minecraft.server.level.ServerLevel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnchantEventHandler implements ServerTickEvents.EndWorldTick {
+public class EnchantEventHandler implements ServerTickEvents.EndLevelTick {
 
     public static void initialise() {
-        ServerTickEvents.END_WORLD_TICK.register(new EnchantEventHandler());
+        ServerTickEvents.END_LEVEL_TICK.register(new EnchantEventHandler());
     }
 
     @Override
