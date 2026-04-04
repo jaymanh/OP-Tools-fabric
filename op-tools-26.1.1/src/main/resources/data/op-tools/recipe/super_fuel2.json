@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#C#",
+        "###"
+    ],
+    "key": {
+        "#": "minecraft:moss_block",
+        "C": "minecraft:charcoal"
+    },
+    "result": {
+        "id": "op-tools:super_fuel",
+        "count": 1
+    },
+    "group": "super_fuel"
+}
