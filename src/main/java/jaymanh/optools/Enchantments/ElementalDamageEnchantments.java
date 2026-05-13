@@ -67,7 +67,7 @@ public class ElementalDamageEnchantments {
         OpTools.register(Identifier.of("elemental_lightning"), (world, level, context, user, pos) -> {
             LOGGER.info("test");
             LightningEntity lightning = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-            lightning.setPosition(user.getEntityPos());
+            lightning.setPosition(user.getPos());
             world.spawnEntity(lightning);
         });
 

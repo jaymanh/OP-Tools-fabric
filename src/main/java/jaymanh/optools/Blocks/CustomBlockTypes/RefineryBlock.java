@@ -60,7 +60,7 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
     }
 
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!world.isClient()){
+        if (!world.isClient){
             NamedScreenHandlerFactory screenHandlerFactory = ((RefineryBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null){

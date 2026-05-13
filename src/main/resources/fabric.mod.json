@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "op-tools",
-	"version": "1.8.2",
+	"version": "1.8.1",
 	"name": "OP Tools",
 	"description": "This is a basic mod that adds op tools to survival",
 	"authors": [
@@ -33,8 +33,8 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.17.2",
-		"minecraft": "~1.21.9",
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.8",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
