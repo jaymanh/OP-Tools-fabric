@@ -4,19 +4,22 @@ import jaymanh.optools.Armor.ModArmor;
 import jaymanh.optools.Foods.ModFoodItems;
 import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.tags.ItemTags;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
+
 import java.util.concurrent.CompletableFuture;
 
-public class OpToolsModItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
-    public OpToolsModItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+public class OpToolsModItemTagProvider extends FabricTagProvider.ItemTagProvider {
+    public OpToolsModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider wrapperLookup) {
+    protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         valueLookupBuilder(ItemTags.SWORDS)
                 .add(ModTools.DIAMONDILLIUM_SWORD)
                 .add(ModTools.DIAMONDIUM_SWORD);

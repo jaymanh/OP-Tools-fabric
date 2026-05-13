@@ -1,18 +1,19 @@
 package jaymanh.optools.Enchantments;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.world.ServerWorld;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnchantEventHandler implements ServerTickEvents.EndLevelTick {
+public class EnchantEventHandler implements ServerTickEvents.EndWorldTick {
 
     public static void initialise() {
-        ServerTickEvents.END_LEVEL_TICK.register(new EnchantEventHandler());
+        ServerTickEvents.END_WORLD_TICK.register(new EnchantEventHandler());
     }
 
     @Override
-    public void onEndTick(ServerLevel serverWorld) {
+    public void onEndTick(ServerWorld serverWorld) {
         List<AutoReplantEnchantment.ReplantTask> tasksToProcess = new ArrayList<>();
         for (AutoReplantEnchantment.ReplantTask task : AutoReplantEnchantment.getReplantTasks()) {
             if (task.world() == serverWorld) {
@@ -20,7 +21,7 @@ public class EnchantEventHandler implements ServerTickEvents.EndLevelTick {
             }
         }
         for (AutoReplantEnchantment.ReplantTask task : tasksToProcess) {
-            serverWorld.setBlockAndUpdate(task.pos(), task.block().defaultBlockState());
+            serverWorld.setBlockState(task.pos(), task.block().getDefaultState());
             AutoReplantEnchantment.getReplantTasks().remove(task);
         }
     }

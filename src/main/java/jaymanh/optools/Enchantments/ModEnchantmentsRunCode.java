@@ -3,18 +3,18 @@ package jaymanh.optools.Enchantments;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import jaymanh.optools.OpTools;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.enchantment.EnchantmentEffectContext;
+import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
+import net.minecraft.entity.Entity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 
 import static jaymanh.optools.OpTools.LOGGER;
 
 public record ModEnchantmentsRunCode(Identifier hook) implements EnchantmentEntityEffect {
     @Override
-    public void apply(ServerLevel world, int level, EnchantedItemInUse context, Entity user, Vec3 pos) {
+    public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
         OpTools.CodeRunner runner = OpTools.get(hook);
         if (runner != null){
             runner.run(world, level, context, user, pos);
@@ -30,7 +30,7 @@ public record ModEnchantmentsRunCode(Identifier hook) implements EnchantmentEnti
     );
 
     @Override
-    public MapCodec<ModEnchantmentsRunCode> codec() {
+    public MapCodec<ModEnchantmentsRunCode> getCodec() {
         return CODEC;
     }
 }

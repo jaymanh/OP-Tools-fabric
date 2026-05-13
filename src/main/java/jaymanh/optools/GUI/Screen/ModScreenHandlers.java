@@ -1,17 +1,17 @@
 package jaymanh.optools.GUI.Screen;
 
-import net.fabricmc.fabric.api.menu.v1.ExtendedMenuType;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.inventory.MenuType;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.Identifier;
 
 import static jaymanh.optools.OpTools.MOD_ID;
 
 public class ModScreenHandlers {
-    public static final MenuType<RefineryScreenHandler> REFINERY_SCREEN_HANDLER =
-            Registry.register(BuiltInRegistries.MENU, Identifier.fromNamespaceAndPath(MOD_ID, "refinery"),
-            new ExtendedMenuType<>(RefineryScreenHandler::new, BlockPosPayload.PACKET_CODEC));
+    public static final ScreenHandlerType<RefineryScreenHandler> REFINERY_SCREEN_HANDLER =
+            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(MOD_ID, "refinery"),
+            new ExtendedScreenHandlerType<>(RefineryScreenHandler::new, BlockPosPayload.PACKET_CODEC));
 
     public static void registerScreenHandlers(){
 

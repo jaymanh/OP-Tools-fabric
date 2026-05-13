@@ -1,11 +1,11 @@
 package jaymanh.optools.Enchantments;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.entity.EntityTypeTest;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.TypeFilter;
 
 import static jaymanh.optools.OpTools.LOGGER;
 
@@ -14,16 +14,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class EnchantTick implements ServerTickEvents.EndLevelTick {
+public class EnchantTick implements ServerTickEvents.EndWorldTick {
     public static void initialise() {
-        ServerTickEvents.END_LEVEL_TICK.register(new EnchantTick());
+        ServerTickEvents.END_WORLD_TICK.register(new EnchantTick());
     }
 
     @Override
-    public void onEndTick(ServerLevel world) {
-        List<? extends LivingEntity> entitiesList = world.getEntities(EntityTypeTest.forClass(LivingEntity.class), EntitySelector.ENTITY_STILL_ALIVE);
+    public void onEndTick(ServerWorld world) {
+        List<? extends LivingEntity> entitiesList = world.getEntitiesByType(TypeFilter.instanceOf(LivingEntity.class), EntityPredicates.VALID_ENTITY);
         for (Entity entity : entitiesList) {
-            Set<String> tags = new HashSet<>(entity.entityTags());
+            Set<String> tags = new HashSet<>(entity.getCommandTags());
             for (String cTag : tags) {
                 if (Objects.equals(cTag, "Gravity")) {
                     for (String cTags : tags) {
@@ -39,12 +39,12 @@ public class EnchantTick implements ServerTickEvents.EndLevelTick {
 
                             if (currentNum == 100) {
                                 entity.setNoGravity(false);
-                                entity.removeTag("Num" + numPart);
-                                entity.removeTag("Gravity");
+                                entity.removeCommandTag("Num" + numPart);
+                                entity.removeCommandTag("Gravity");
                             } else {
-                                entity.removeTag("Num" + numPart);
+                                entity.removeCommandTag("Num" + numPart);
                                 int nextNum = currentNum + 1;
-                                entity.addTag("Num" + nextNum);
+                                entity.addCommandTag("Num" + nextNum);
                             }
                         }
                     }

@@ -1,32 +1,32 @@
 package jaymanh.optools.GUI.Screen;
 
 import jaymanh.optools.Blocks.BlockEntitys.RefineryBlockEntity;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.SimpleContainerData;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
 
-public class RefineryScreenHandler extends AbstractContainerMenu {
-    private  final Container inventory;
-    private final ContainerData propertyDelegate;
+public class RefineryScreenHandler extends ScreenHandler {
+    private  final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
     public final RefineryBlockEntity blockEntity;
 
-    public RefineryScreenHandler(int syncId, Inventory playerInventory, BlockPosPayload payload) {
-        this(syncId, playerInventory, playerInventory.player.level().getBlockEntity(payload.pos()),
-                new SimpleContainerData(2));
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory, BlockPosPayload payload) {
+        this(syncId, playerInventory, playerInventory.player.getEntityWorld().getBlockEntity(payload.pos()),
+                new ArrayPropertyDelegate(2));
     }
 
-    public RefineryScreenHandler(int syncId, Inventory playerInventory,
-                                     BlockEntity blockEntity, ContainerData arrayPropertyDelegate) {
+    public RefineryScreenHandler(int syncId, PlayerInventory playerInventory,
+                                     BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.REFINERY_SCREEN_HANDLER, syncId);
-        checkContainerSize(((Container) blockEntity), 2);
-        this.inventory = ((Container) blockEntity);
-        inventory.startOpen(playerInventory.player);
+        checkSize(((Inventory) blockEntity), 2);
+        this.inventory = ((Inventory) blockEntity);
+        inventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((RefineryBlockEntity) blockEntity);
 
@@ -37,7 +37,7 @@ public class RefineryScreenHandler extends AbstractContainerMenu {
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
 
-        addDataSlots(arrayPropertyDelegate);
+        addProperties(arrayPropertyDelegate);
     }
 
 
@@ -54,7 +54,7 @@ public class RefineryScreenHandler extends AbstractContainerMenu {
         return maxProgress != 0 && progress != 0 ? progress* progressArrowSize / maxProgress : 0;
     }
 
-    private void addPlayerInventory(Inventory playerInventory) {
+    private void addPlayerInventory(PlayerInventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
                 this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
@@ -62,31 +62,31 @@ public class RefineryScreenHandler extends AbstractContainerMenu {
         }
     }
 
-    private void addPlayerHotbar(Inventory playerInventory) {
+    private void addPlayerHotbar(PlayerInventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int invSlot) {
+    public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
-        if (slot != null && slot.hasItem()) {
-            ItemStack originalStack = slot.getItem();
+        if (slot != null && slot.hasStack()) {
+            ItemStack originalStack = slot.getStack();
             newStack = originalStack.copy();
-            if (invSlot < this.inventory.getContainerSize()) {
-                if (!this.moveItemStackTo(originalStack, this.inventory.getContainerSize(), this.slots.size(), true)) {
+            if (invSlot < this.inventory.size()) {
+                if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.moveItemStackTo(originalStack, 0, this.inventory.getContainerSize(), false)) {
+            } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
                 return ItemStack.EMPTY;
             }
 
             if (originalStack.isEmpty()) {
-                slot.setByPlayer(ItemStack.EMPTY);
+                slot.setStack(ItemStack.EMPTY);
             } else {
-                slot.setChanged();
+                slot.markDirty();
             }
         }
 
@@ -96,8 +96,8 @@ public class RefineryScreenHandler extends AbstractContainerMenu {
 
 
     @Override
-    public boolean stillValid(Player player) {
-        return this.inventory.stillValid(player);
+    public boolean canUse(PlayerEntity player) {
+        return this.inventory.canPlayerUse(player);
     }
 }
 

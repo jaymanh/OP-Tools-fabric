@@ -12,13 +12,14 @@ import jaymanh.optools.Items.ModItems;
 import jaymanh.optools.Tools.ModTools;
 import jaymanh.optools.OreGen.ModOreGenerator;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.phys.Vec3;
+
+import net.minecraft.enchantment.EnchantmentEffectContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +37,7 @@ public class OpTools implements ModInitializer {
 
 	@FunctionalInterface
 	public interface CodeRunner {
-		void run(ServerLevel world, int level, EnchantedItemInUse context, Entity user, Vec3 pos);
+		void run(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos);
 	}
 	public static CodeRunner get(Identifier hook){
 		return registry.get(hook);
@@ -50,7 +51,7 @@ public class OpTools implements ModInitializer {
 
 		LOGGER.info("Loading %s".formatted(MOD_ID));
 
-		Registry.register(BuiltInRegistries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.fromNamespaceAndPath(MOD_ID, "run_code"), ModEnchantmentsRunCode.CODEC);
+		Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.of(MOD_ID, "run_code"), ModEnchantmentsRunCode.CODEC);
 
 		ModArmorMaterials.initialise();
 

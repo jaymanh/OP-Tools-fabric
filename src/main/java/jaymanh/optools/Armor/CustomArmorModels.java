@@ -1,17 +1,19 @@
 package jaymanh.optools.Armor;
 
-import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.item.equipment.EquipmentAsset;
+import net.minecraft.item.equipment.EquipmentAssetKeys;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
+
+import java.util.function.BiConsumer;
 
 import static jaymanh.optools.OpTools.MOD_ID;
 
-public class CustomArmorModels implements EquipmentAssets {
-    public static final ResourceKey<? extends Registry<EquipmentAsset>> REGISTRY_KEY = ResourceKey.createRegistryKey(Identifier.withDefaultNamespace("equipment_asset"));
+public class CustomArmorModels implements EquipmentAssetKeys {
+    public static final RegistryKey<? extends Registry<EquipmentAsset>> REGISTRY_KEY = RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset"));
 
-    public static final ResourceKey<EquipmentAsset> DIAMONDILLIUM = ResourceKey.create(REGISTRY_KEY,Identifier.fromNamespaceAndPath(MOD_ID, "diamondillium"));
-    public static final ResourceKey<EquipmentAsset>  DIAMONDIUM = ResourceKey.create(REGISTRY_KEY,Identifier.fromNamespaceAndPath(MOD_ID, "diamondium"));
+    public static final RegistryKey<EquipmentAsset> DIAMONDILLIUM = RegistryKey.of(REGISTRY_KEY,Identifier.of(MOD_ID, "diamondillium"));
+    public static final RegistryKey<EquipmentAsset>  DIAMONDIUM = RegistryKey.of(REGISTRY_KEY,Identifier.of(MOD_ID, "diamondium"));
 
 }

@@ -1,18 +1,20 @@
 package jaymanh.optools.Enchantments;
 
 import jaymanh.optools.OpTools;
-import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentEffectContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +29,7 @@ public class AutoReplantEnchantment {
 
     private static final List<ReplantTask> replantTasks = new ArrayList<>();
 
-    static record ReplantTask(ServerLevel world, BlockPos pos, Block block) {}
+    static record ReplantTask(ServerWorld world, BlockPos pos, Block block) {}
 
     static {
         blockToItemMap.put(Blocks.WHEAT, Items.WHEAT_SEEDS);
@@ -40,10 +42,10 @@ public class AutoReplantEnchantment {
         blockToItemMap.put(Blocks.COCOA, Items.COCOA_BEANS);
     }
 
-    private static void scheduleReplant(BlockPos blockPos, Block blockType, ServerLevel world, int level, EnchantedItemInUse context, Entity user) {
+    private static void scheduleReplant(BlockPos blockPos, Block blockType, ServerWorld world, int level, EnchantmentEffectContext context, Entity user) {
         Item item = blockToItemMap.get(blockType);
         if (item != null) {
-            Player player = (Player) user;
+            PlayerEntity player = (PlayerEntity) user;
             ItemStack itemStack = new ItemStack(item);
 
             if (hasItemInInventory(player, itemStack)) {
@@ -55,7 +57,7 @@ public class AutoReplantEnchantment {
     }
 
     public static void initialise() {
-        OpTools.register(Identifier.parse("crop_break"), (world, level, context, user, pos) -> {
+        OpTools.register(Identifier.of("crop_break"), (world, level, context, user, pos) -> {
             BlockPos blockPos = new BlockPos(
                     (int) Math.floor(pos.x),
                     (int) Math.floor(pos.y),
@@ -64,9 +66,9 @@ public class AutoReplantEnchantment {
 
             Block block = world.getBlockState(blockPos).getBlock();
 
-            if (world.getBlockState(blockPos).is(BlockTags.CROPS)) {
-                ((ServerLevel) world).getServer().execute(() -> {
-                    scheduleReplant(blockPos, block, (ServerLevel) world, level, context, user);
+            if (world.getBlockState(blockPos).isIn(BlockTags.CROPS)) {
+                ((ServerWorld) world).getServer().execute(() -> {
+                    scheduleReplant(blockPos, block, (ServerWorld) world, level, context, user);
                 });
             }
         });
