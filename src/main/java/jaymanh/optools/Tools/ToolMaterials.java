@@ -1,10 +1,10 @@
 package jaymanh.optools.Tools;
 
+import net.minecraft.item.ToolMaterial;
+
 import static jaymanh.optools.Tools.TagKeys.ItemKeys.DIAMONDILLIUM_REPAIR_ITEMS;
 import static jaymanh.optools.Tools.TagKeys.ItemKeys.DIAMONDIUM_REPAIR_ITEMS;
-import static net.minecraft.tags.BlockTags.*;
-
-import net.minecraft.world.item.ToolMaterial;
+import static net.minecraft.registry.tag.BlockTags.*;
 
 public enum ToolMaterials {
     DIAMONDILLIUM(

@@ -4,32 +4,34 @@ import jaymanh.optools.GUI.ImplementedInventory;
 import jaymanh.optools.GUI.Screen.BlockPosPayload;
 import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import jaymanh.optools.Items.ModItems;
-import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.WorldlyContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.ValueInput;
-import net.minecraft.world.level.storage.ValueOutput;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.LockableContainerBlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.storage.ReadView;
+import net.minecraft.storage.WriteView;
+import net.minecraft.text.Text;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 
-public class RefineryBlockEntity extends BaseContainerBlockEntity implements ExtendedMenuProvider<BlockPosPayload>, ImplementedInventory, WorldlyContainer {
+public class RefineryBlockEntity extends LockableContainerBlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory, SidedInventory {
 
 
-    private final  NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
+    private final  DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
@@ -37,13 +39,13 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
     private static final int[] BOTTOM_SLOTS = new int[]{1, 1};
     private static final int[] SIDE_SLOTS = new int[]{0};
 
-    protected final ContainerData propertyDelegate;
+    protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 120;
 
     public RefineryBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntitys.REFINERY_BLOCK_ENTITY, pos, state);
-        this.propertyDelegate = new ContainerData() {
+        this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
@@ -62,61 +64,66 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
             }
 
             @Override
-            public int getCount() {
+            public int size() {
                 return 2;
             }
         };
     }
 
     @Override
-    public void setChanged() {
-        assert level != null;
-        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
-        super.setChanged();
+    public void markDirty() {
+        assert world != null;
+        world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        super.markDirty();
     }
 
     @Override
-    protected void saveAdditional(ValueOutput writeView) {
-        super.saveAdditional(writeView);
-        ContainerHelper.saveAllItems(writeView, this.inventory);
+    protected void writeData(WriteView writeView) {
+        super.writeData(writeView);
+        Inventories.writeData(writeView, this.inventory);
         writeView.putInt("refinery.progress", 0);
     }
 
     @Override
-    public void loadAdditional(ValueInput readView) {
-        super.loadAdditional(readView);
-        ContainerHelper.loadAllItems(readView, this.inventory);
-        readView.getInt("refinery.progress").ifPresent(progress -> this.progress = progress);
+    public void readData(ReadView readView) {
+        super.readData(readView);
+        Inventories.readData(readView, this.inventory);
+        readView.getOptionalInt("refinery.progress").ifPresent(progress -> this.progress = progress);
     }
 
     @Override
-    public Component getDisplayName() {
-        return Component.translatable("block.op-tools.refinery");
+    public DefaultedList<ItemStack> getItems() {
+        return inventory;
     }
 
     @Override
-    protected Component getDefaultName() {
+    public Text getDisplayName() {
+        return Text.translatable("block.op-tools.refinery");
+    }
+
+    @Override
+    protected Text getContainerName() {
         return this.getDisplayName();
     }
 
     @Override
-    public NonNullList<ItemStack> getItems() {
+    protected DefaultedList<ItemStack> getHeldStacks() {
         return this.inventory;
     }
 
     @Override
-    protected void setItems(NonNullList<ItemStack> inventory) {
+    protected void setHeldStacks(DefaultedList<ItemStack> inventory) {
 
     }
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int syncId, Inventory playerInventory, Player player) {
+    public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new RefineryScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
         return null;
     }
 
@@ -124,8 +131,8 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
         this.progress = 0;
     }
 
-    public void tick(Level world, BlockPos pos, BlockState state) {
-        if(world.isClientSide()){
+    public void tick(World world, BlockPos pos, BlockState state) {
+        if(world.isClient()){
             return;
         }
         //called every tick
@@ -133,7 +140,7 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
         if(isOutputSlotEmptyOrReceivable()){
             if(this.hasRecipe()){
                 this.increaseCraftProgress();
-                setChanged(world, pos, state);
+                markDirty(world, pos, state);
 
                 if(hasCraftingFinished()){
                     this.craftItem();
@@ -144,11 +151,11 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
             }
         } else {
             this.resetProgress();
-            setChanged(world, pos, state);
+            markDirty(world, pos, state);
         }
     }
 
-    public int[] getSlotsForFace(Direction side) {
+    public int[] getAvailableSlots(Direction side) {
         if (side == Direction.DOWN) {
             return BOTTOM_SLOTS;
         } else {
@@ -157,10 +164,10 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
     }
 
     private void craftItem() {
-        this.removeItem(INPUT_SLOT, 1);
+        this.removeStack(INPUT_SLOT, 1);
         ItemStack result = new ItemStack(ModItems.REFINED_DARKMATTER);
 
-        this.setItem(OUTPUT_SLOT, new ItemStack(result.getItem(), getItem(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
     }
 
     private boolean hasCraftingFinished() {
@@ -173,25 +180,25 @@ public class RefineryBlockEntity extends BaseContainerBlockEntity implements Ext
 
     private boolean hasRecipe() {
         ItemStack result = new ItemStack(ModItems.REFINED_DARKMATTER);
-        boolean hasInput = getItem(INPUT_SLOT).getItem() == ModItems.RAW_DARKMATTER;
+        boolean hasInput = getStack(INPUT_SLOT).getItem() == ModItems.RAW_DARKMATTER;
 
         return hasInput && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.getItem(OUTPUT_SLOT).getItem() == item || this.getItem(OUTPUT_SLOT).isEmpty();
+        return this.getStack(OUTPUT_SLOT).getItem() == item || this.getStack(OUTPUT_SLOT).isEmpty();
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
-        return this.getItem(OUTPUT_SLOT).getCount() + result.getCount() <= getItem(OUTPUT_SLOT).getMaxStackSize();
+        return this.getStack(OUTPUT_SLOT).getCount() + result.getCount() <= getStack(OUTPUT_SLOT).getMaxCount();
     }
 
     private boolean isOutputSlotEmptyOrReceivable() {
-        return this.getItem(OUTPUT_SLOT).isEmpty() || this.getItem(OUTPUT_SLOT).getCount() < this.getItem(OUTPUT_SLOT).getMaxStackSize();
+        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
     }
 
     @Override
-    public BlockPosPayload getScreenOpeningData(ServerPlayer player) {
-        return new BlockPosPayload(this.worldPosition);
+    public BlockPosPayload getScreenOpeningData(ServerPlayerEntity player) {
+        return new BlockPosPayload(this.pos);
     }
 }

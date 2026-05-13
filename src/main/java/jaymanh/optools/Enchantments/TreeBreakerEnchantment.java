@@ -1,14 +1,16 @@
 package jaymanh.optools.Enchantments;
 
 import jaymanh.optools.OpTools;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.enchantment.EnchantedItemInUse;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentEffectContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,7 +22,7 @@ public class TreeBreakerEnchantment {
 
     private static final int MAX_BLOCKS = 64 * 9;
 
-    private static void BreakTrees(BlockPos blockPos, Block woodType, Level world, int level, EnchantedItemInUse context, Entity user) {
+    private static void BreakTrees(BlockPos blockPos, Block woodType, World world, int level, EnchantmentEffectContext context, Entity user) {
         ArrayList<BlockPos> blockPosList = new ArrayList<>();
         blockPosList.add(blockPos);
 
@@ -33,11 +35,11 @@ public class TreeBreakerEnchantment {
             while (iterator.hasNext()) {
                 BlockPos currentPos = iterator.next();
 
-                world.destroyBlock(currentPos, true);
+                world.breakBlock(currentPos, true);
                 iterator.remove();
 
                 for (Direction direction : Direction.values()) {
-                    BlockPos offsetPos = currentPos.relative(direction);
+                    BlockPos offsetPos = currentPos.offset(direction);
 
                     if (world.getBlockState(offsetPos).getBlock() == woodType && seenPositions.add(offsetPos)) {
                         newPositions.add(offsetPos);
@@ -47,7 +49,7 @@ public class TreeBreakerEnchantment {
                 for (Direction direction1 : Direction.values()) {
                     for (Direction direction2 : Direction.values()) {
                         if (direction1 != direction2 && direction1.getAxis() != direction2.getAxis()) {
-                            BlockPos diagonalOffset = currentPos.relative(direction1).relative(direction2);
+                            BlockPos diagonalOffset = currentPos.offset(direction1).offset(direction2);
                             if (world.getBlockState(diagonalOffset).getBlock() == woodType && seenPositions.add(diagonalOffset)) {
                                 newPositions.add(diagonalOffset);
                             }
@@ -57,7 +59,7 @@ public class TreeBreakerEnchantment {
 
                 if (newPositions.size() > MAX_BLOCKS) {
                     for (BlockPos pos : blockPosList) {
-                        world.destroyBlock(pos, true);
+                        world.breakBlock(pos, true);
                     }
                     return;
                 }
@@ -73,7 +75,7 @@ public class TreeBreakerEnchantment {
 
 
     public static void initialise(){
-        OpTools.register(Identifier.parse("tree_breaker_hit"), (world, level, context, user, pos) -> {
+        OpTools.register(Identifier.of("tree_breaker_hit"), (world, level, context, user, pos) -> {
             BlockPos blockPos = new BlockPos(
                     (int)Math.floor(pos.x),
                     (int)Math.floor(pos.y),
@@ -81,7 +83,7 @@ public class TreeBreakerEnchantment {
             );
             //LOGGER.info(world.getBlockState(blockPos).toString());
 
-            if(world.getBlockState(blockPos).is(BlockTags.LOGS))
+            if(world.getBlockState(blockPos).isIn(BlockTags.LOGS))
             {
                 BreakTrees(blockPos, world.getBlockState(blockPos).getBlock(), world, level, context, user);
             }

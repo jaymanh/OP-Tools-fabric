@@ -2,17 +2,17 @@ package jaymanh.optools.Blocks;
 
 import jaymanh.optools.Blocks.CustomBlockTypes.RefineryBlock;
 import jaymanh.optools.Tools.ModTools;
-import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 
 import static jaymanh.optools.OpTools.MOD_ID;
 import static jaymanh.optools.Tools.ModTools.OP_TOOLS_ITEM_GROUP_KEY;
@@ -20,55 +20,55 @@ import static jaymanh.optools.Tools.ModTools.OP_TOOLS_ITEM_GROUP_KEY;
 public class ModBlocks {
     public static Block register(Block block, String name, boolean shouldRegisterItem){
         if(shouldRegisterItem){
-            BlockItem blockItem = new BlockItem(block, new Item.Properties().setId(ModTools.key(name)).useBlockDescriptionPrefix());
-            Registry.register(BuiltInRegistries.ITEM, ModTools.key(name), blockItem);
+            BlockItem blockItem = new BlockItem(block, new Item.Settings().registryKey(ModTools.key(name)).useBlockPrefixedTranslationKey());
+            Registry.register(Registries.ITEM, ModTools.key(name), blockItem);
         }
-        return Registry.register(BuiltInRegistries.BLOCK, key(name), block);
+        return Registry.register(Registries.BLOCK, key(name), block);
     }
 
-    public static ResourceKey<Block> key(String id){
-        Identifier BLOCK_ID = Identifier.fromNamespaceAndPath(MOD_ID, id);
-        return ResourceKey.create(Registries.BLOCK, BLOCK_ID);
+    public static RegistryKey<Block> key(String id){
+        Identifier BLOCK_ID = Identifier.of(MOD_ID, id);
+        return RegistryKey.of(RegistryKeys.BLOCK, BLOCK_ID);
     }
 
     public static final Block DIAMONDIUM_BLOCK = register(
-            new Block(BlockBehaviour.Properties.of().sound(SoundType.NETHERITE_BLOCK).destroyTime(4f).requiresCorrectToolForDrops().setId(key("diamondium_block"))),
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.NETHERITE).hardness(4f).requiresTool().registryKey(key("diamondium_block"))),
             "diamondium_block",
             true
     );
 
     public static final Block DIAMONDILLIUM_BLOCK = register(
-            new Block(BlockBehaviour.Properties.of().sound(SoundType.NETHERITE_BLOCK).destroyTime(5f).requiresCorrectToolForDrops().setId(key("diamondillium_block"))),
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.NETHERITE).hardness(5f).requiresTool().registryKey(key("diamondillium_block"))),
             "diamondillium_block",
             true
     );
 
     public static final Block STONE_DARKMATTER_ORE = register(
-            new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).destroyTime(1f).requiresCorrectToolForDrops().setId(key("stone_darkmatter_ore"))),
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.STONE).hardness(1f).requiresTool().registryKey(key("stone_darkmatter_ore"))),
             "stone_darkmatter_ore",
             true
     );
 
     public static final Block DEEPSLATE_DARKMATTER_ORE = register(
-            new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).destroyTime(1.5f).requiresCorrectToolForDrops().setId(key("deepslate_darkmatter_ore"))),
+            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.DEEPSLATE).hardness(1.5f).requiresTool().registryKey(key("deepslate_darkmatter_ore"))),
             "deepslate_darkmatter_ore",
             true
     );
 
     public static final Block REFINERY = register(
-            new RefineryBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).destroyTime(0.5f).setId(key("refinery"))),
+            new RefineryBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).hardness(0.5f).registryKey(key("refinery"))),
             "refinery",
             true
     );
 
     public static void initialize(){
 
-        CreativeModeTabEvents.modifyOutputEvent(OP_TOOLS_ITEM_GROUP_KEY).register(event -> {
-            event.accept(ModBlocks.DIAMONDIUM_BLOCK.asItem());
-            event.accept(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
-            event.accept(ModBlocks.STONE_DARKMATTER_ORE.asItem());
-            event.accept(ModBlocks.DEEPSLATE_DARKMATTER_ORE.asItem());
-            event.accept(ModBlocks.REFINERY.asItem());
+        ItemGroupEvents.modifyEntriesEvent(OP_TOOLS_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(ModBlocks.DIAMONDIUM_BLOCK.asItem());
+            itemGroup.add(ModBlocks.DIAMONDILLIUM_BLOCK.asItem());
+            itemGroup.add(ModBlocks.STONE_DARKMATTER_ORE.asItem());
+            itemGroup.add(ModBlocks.DEEPSLATE_DARKMATTER_ORE.asItem());
+            itemGroup.add(ModBlocks.REFINERY.asItem());
         });
     }
 }

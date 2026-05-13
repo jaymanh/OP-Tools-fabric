@@ -3,79 +3,78 @@ package jaymanh.optools.Blocks.CustomBlockTypes;
 import com.mojang.serialization.MapCodec;
 import jaymanh.optools.Blocks.BlockEntitys.ModBlockEntitys;
 import jaymanh.optools.Blocks.BlockEntitys.RefineryBlockEntity;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class RefineryBlock extends BaseEntityBlock implements EntityBlock {
-    public RefineryBlock(Properties settings) {
+public class RefineryBlock extends BlockWithEntity implements BlockEntityProvider {
+    public RefineryBlock(Settings settings) {
         super(settings);
     }
 
     @Override
-    protected MapCodec<? extends RefineryBlock> codec() {
-        return simpleCodec(RefineryBlock::new);
+    protected MapCodec<? extends RefineryBlock> getCodec() {
+        return createCodec(RefineryBlock::new);
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new RefineryBlockEntity(pos, state);
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override
-    public void affectNeighborsAfterRemoval(BlockState state, ServerLevel serverWorld, BlockPos pos, boolean moved) {
+    public void onStateReplaced(BlockState state, ServerWorld serverWorld, BlockPos pos, boolean moved) {
         if (state.getBlock() != serverWorld.getBlockState(pos).getBlock()){
             BlockEntity blockEntity = serverWorld.getBlockEntity(pos);
             if(blockEntity instanceof RefineryBlockEntity){
-                Containers.dropContents(serverWorld, pos, (RefineryBlockEntity)blockEntity);
-                serverWorld.updateNeighbourForOutputSignal(pos, this);
+                ItemScatterer.spawn(serverWorld, pos, (RefineryBlockEntity)blockEntity);
+                serverWorld.updateComparators(pos, this);
             }
-            super.affectNeighborsAfterRemoval(state, serverWorld, pos, moved);
+            super.onStateReplaced(state, serverWorld, pos, moved);
         }
     }
-    protected boolean hasAnalogOutputSignal(BlockState state) {
+    protected boolean hasComparatorOutput(BlockState state) {
         return true;
     }
 
-    protected int getComparatorOutput(BlockState state, Level world, BlockPos pos) {
-        return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(world.getBlockEntity(pos));
+    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
     }
 
-    protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
-        if (!world.isClientSide()){
-            MenuProvider screenHandlerFactory = ((RefineryBlockEntity) world.getBlockEntity(pos));
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (!world.isClient()){
+            NamedScreenHandlerFactory screenHandlerFactory = ((RefineryBlockEntity) world.getBlockEntity(pos));
 
             if (screenHandlerFactory != null){
-                player.openMenu(screenHandlerFactory);
+                player.openHandledScreen(screenHandlerFactory);
             }
         }
 
-        return InteractionResult.SUCCESS;
+        return ActionResult.SUCCESS;
     }
 
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntitys.REFINERY_BLOCK_ENTITY,
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return validateTicker(type, ModBlockEntitys.REFINERY_BLOCK_ENTITY,
                 (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 }

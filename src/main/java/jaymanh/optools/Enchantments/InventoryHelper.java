@@ -1,18 +1,18 @@
 package jaymanh.optools.Enchantments;
 
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 
 public class InventoryHelper {
 
-    public static int findItemSlot(Player player, ItemStack itemStack) {
-        Inventory inventory = player.getInventory();
+    public static int findItemSlot(PlayerEntity player, ItemStack itemStack) {
+        PlayerInventory inventory = player.getInventory();
 
-        for (int i = 0; i < inventory.getContainerSize(); i++) {
-            ItemStack slotStack = inventory.getItem(i);
+        for (int i = 0; i < inventory.size(); i++) {
+            ItemStack slotStack = inventory.getStack(i);
 
-            if (ItemStack.isSameItem(slotStack, itemStack)) {
+            if (ItemStack.areItemsEqual(slotStack, itemStack)) {
                 return i;
             }
         }
@@ -20,11 +20,11 @@ public class InventoryHelper {
         return -1;
     }
 
-    public static boolean hasItemInInventory(Player player, ItemStack itemStack) {
+    public static boolean hasItemInInventory(PlayerEntity player, ItemStack itemStack) {
         return findItemSlot(player, itemStack) != -1;
     }
 
-    public static void removeItemInInventory(Player player, int itemSlot){
-        player.getInventory().getItem(itemSlot).shrink(1);
+    public static void removeItemInInventory(PlayerEntity player, int itemSlot){
+        player.getInventory().getStack(itemSlot).decrement(1);
     }
 }
