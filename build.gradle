@@ -1,5 +1,9 @@
 plugins {
+<<<<<<< Updated upstream
 	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+=======
+	id 'fabric-loom' version '1.11-SNAPSHOT'
+>>>>>>> Stashed changes
 	id 'maven-publish'
 }
 
