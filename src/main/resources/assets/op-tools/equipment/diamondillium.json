@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "op-tools:diamondillium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "op-tools:diamondillium"
+      }
+    ]
+  }
+}

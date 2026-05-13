@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "o",
+        "/",
+        "/"
+    ],
+    "key": {
+        "o": "op-tools:diamondium_ingot",
+        "/": "minecraft:stick"
+    },
+    "result": {
+        "id": "op-tools:diamondium_shovel",
+        "count": 1
+    }
+}

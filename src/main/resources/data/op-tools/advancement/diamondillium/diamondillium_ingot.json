@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "op-tools:refined_darkmatter"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "op-tools:diamondillium/diamondillium_ingot"
+    ]
+  }
+}
