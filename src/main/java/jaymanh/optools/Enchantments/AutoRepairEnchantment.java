@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
 
-import static java.lang.Math.max;
+import static jaymanh.optools.OpTools.LOGGER;
 import static jaymanh.optools.OpTools.MOD_ID;
 
 public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
@@ -33,9 +33,10 @@ public class AutoRepairEnchantment implements ServerTickEvents.EndWorldTick {
 
             ItemStack itemStack = player.getInventory().getStack(i);
             DynamicRegistryManager drm = world.getRegistryManager();
-            Registry<Enchantment> reg = drm.getOrThrow(RegistryKeys.ENCHANTMENT);
+            Registry<Enchantment> reg = drm.get(RegistryKeys.ENCHANTMENT);
             Optional<RegistryEntry<Enchantment>> optional = Optional.ofNullable(reg.getEntry(reg.get(AUTO_REPAIR)));
             RegistryEntry<Enchantment> auto_repair = optional.orElseThrow();
+
             int level = EnchantmentHelper.getLevel(auto_repair, itemStack);
             if (level > 0) {
                 int chance = Math.max(level / 2, 1);

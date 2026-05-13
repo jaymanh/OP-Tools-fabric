@@ -6,8 +6,12 @@
         " /"
     ],
     "key": {
-        "o": "op-tools:diamondium_ingot",
-        "/": "minecraft:stick"
+        "o": {
+            "item": "op-tools:diamondium_ingot"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
     },
     "result": {
         "id": "op-tools:diamondium_axe",

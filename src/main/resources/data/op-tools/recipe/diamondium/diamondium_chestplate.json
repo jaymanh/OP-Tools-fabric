@@ -6,7 +6,9 @@
         "ooo"
     ],
     "key": {
-        "o": "op-tools:diamondium_ingot"
+        "o": {
+            "item": "op-tools:diamondium_ingot"
+        }
     },
     "result": {
         "id": "op-tools:diamondium_chestplate",

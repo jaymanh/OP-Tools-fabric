@@ -9,14 +9,18 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
-import static jaymanh.optools.Tools.ModTools.*;
+import static jaymanh.optools.Tools.ModTools.OP_TOOLS_ITEM_GROUP_KEY;
 
 public class ModFoodItems {
+    public static Item register(Item item, String id){
+        Identifier ItemID = Identifier.of(OpTools.MOD_ID, id);
+        return Registry.register(Registries.ITEM, ItemID, item);
+    }
+
     public static final Item SUPER_MEAT = register(new Item(new Item.Settings().rarity(Rarity.RARE).food(new FoodComponent.Builder()
                     .nutrition(20)
                     .saturationModifier(20)
-                    .build())
-                    .registryKey(key("super_meat"))),
+                    .build())),
             "super_meat");
 
     public static void initialise(){

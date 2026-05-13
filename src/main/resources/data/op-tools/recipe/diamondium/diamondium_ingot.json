@@ -6,8 +6,12 @@
         "#n#"
     ],
     "key": {
-        "#": "op-tools:diamondillium_ingot",
-        "n": "op-tools:refined_darkmatter"
+        "#": {
+            "item": "op-tools:diamondillium_ingot"
+        },
+        "n": {
+            "item": "op-tools:refined_darkmatter"
+        }
     },
     "result": {
         "id": "op-tools:diamondium_ingot",

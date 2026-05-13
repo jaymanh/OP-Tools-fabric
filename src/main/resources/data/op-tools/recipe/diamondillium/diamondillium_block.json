@@ -6,7 +6,9 @@
         "###"
     ],
     "key": {
-        "#": "op-tools:diamondillium_ingot"
+        "#": {
+            "item": "op-tools:diamondillium_ingot"
+        }
     },
     "result": {
         "id": "op-tools:diamondillium_block",

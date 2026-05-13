@@ -6,8 +6,12 @@
         "###"
     ],
     "key": {
-        "#": "minecraft:egg",
-        "C": "minecraft:cooked_porkchop"
+        "#": {
+            "item": "minecraft:egg"
+        },
+        "C": {
+            "item": "minecraft:cooked_porkchop"
+        }
     },
     "result": {
         "id": "op-tools:super_meat",
