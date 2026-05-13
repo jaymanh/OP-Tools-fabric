@@ -18,8 +18,6 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -78,17 +76,17 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
     }
 
     @Override
-    protected void writeData(WriteView writeView) {
-        super.writeData(writeView);
-        Inventories.writeData(writeView, this.inventory);
-        writeView.putInt("refinery.progress", 0);
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
+        super.writeNbt(nbt, wrapper);
+        Inventories.writeNbt(nbt, inventory, wrapper);
+        nbt.putInt("refinery.progress", progress);
     }
 
     @Override
-    public void readData(ReadView readView) {
-        super.readData(readView);
-        Inventories.readData(readView, this.inventory);
-        readView.getOptionalInt("refinery.progress").ifPresent(progress -> this.progress = progress);
+    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
+        super.readNbt(nbt, wrapper);
+        Inventories.readNbt(nbt, inventory, wrapper);
+        progress = nbt.getInt("refinery.progress",0);
     }
 
     @Override

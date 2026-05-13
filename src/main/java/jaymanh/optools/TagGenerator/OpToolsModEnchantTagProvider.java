@@ -1,58 +1,37 @@
 package jaymanh.optools.TagGenerator;
 
-import jaymanh.optools.Enchantments.ModEnchantments;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.data.tag.EnchantmentTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.EnchantmentTags;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
+import static jaymanh.optools.OpTools.MOD_ID;
 
-public class OpToolsModEnchantTagProvider extends EnchantmentTagProvider {
+public class OpToolsModEnchantTagProvider extends FabricTagProvider<Enchantment> {
     public OpToolsModEnchantTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, registriesFuture);
+        super(output, RegistryKeys.ENCHANTMENT, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker"))
+                .addOptional(Identifier.of(MOD_ID, "auto_repair")).addOptional(Identifier.of(MOD_ID, "elemental_fire")).addOptional(Identifier.of(MOD_ID, "elemental_water"))
+                .addOptional(Identifier.of(MOD_ID, "elemental_earth")).addOptional(Identifier.of(MOD_ID, "elemental_lightning"));
 
-        this.builder(EnchantmentTags.IN_ENCHANTING_TABLE)
-                .addOptional(ModEnchantments.AUTO_REPAIR)
-                .addOptional(ModEnchantments.AUTO_REPLANT)
-                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
-                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
-                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .addOptional(ModEnchantments.ELEMENTAL_WATER)
-                .addOptional(ModEnchantments.TREE_BREAKER);
+        getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker"))
+                .addOptional(Identifier.of(MOD_ID, "auto_repair")).addOptional(Identifier.of(MOD_ID, "elemental_fire")).addOptional(Identifier.of(MOD_ID, "elemental_water"))
+                .addOptional(Identifier.of(MOD_ID, "elemental_earth")).addOptional(Identifier.of(MOD_ID, "elemental_lightning"));
 
-        this.builder(EnchantmentTags.ON_TRADED_EQUIPMENT)
-                .addOptional(ModEnchantments.AUTO_REPAIR)
-                .addOptional(ModEnchantments.AUTO_REPLANT)
-                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
-                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
-                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .addOptional(ModEnchantments.ELEMENTAL_WATER)
-                .addOptional(ModEnchantments.TREE_BREAKER);
+        getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE).addOptional(Identifier.of(MOD_ID, "auto_replant")).addOptional(Identifier.of(MOD_ID, "tree_breaker"))
+                .addOptional(Identifier.of(MOD_ID, "auto_repair")).addOptional(Identifier.of(MOD_ID, "elemental_fire")).addOptional(Identifier.of(MOD_ID, "elemental_water"))
+                .addOptional(Identifier.of(MOD_ID, "elemental_earth")).addOptional(Identifier.of(MOD_ID, "elemental_lightning"));
 
-        this.builder(EnchantmentTags.NON_TREASURE)
-                .addOptional(ModEnchantments.AUTO_REPAIR)
-                .addOptional(ModEnchantments.AUTO_REPLANT)
-                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
-                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
-                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .addOptional(ModEnchantments.ELEMENTAL_WATER)
-                .addOptional(ModEnchantments.TREE_BREAKER);
-
-        this.builder(EnchantmentTags.IN_ENCHANTING_TABLE)
-                .addOptional(ModEnchantments.AUTO_REPAIR)
-                .addOptional(ModEnchantments.AUTO_REPLANT)
-                .addOptional(ModEnchantments.ELEMENTAL_EARTH)
-                .addOptional(ModEnchantments.ELEMENTAL_FIRE)
-                .addOptional(ModEnchantments.ELEMENTAL_LIGHTNING)
-                .addOptional(ModEnchantments.ELEMENTAL_WATER)
-                .addOptional(ModEnchantments.TREE_BREAKER)
-                .addOptional(Enchantments.MENDING);
+        getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE).add(Enchantments.MENDING);
     }
 }

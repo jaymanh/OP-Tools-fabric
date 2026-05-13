@@ -10,25 +10,25 @@ import net.minecraft.registry.tag.BlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class OpToolsModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
+public class OpToolsModBlockTagProvider extends FabricTagProvider<Block> {
     public OpToolsModBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, registriesFuture);
+        super(output, RegistryKeys.BLOCK, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.DIAMONDILLIUM_BLOCK)
                 .add(ModBlocks.DIAMONDIUM_BLOCK)
                 .add(ModBlocks.DEEPSLATE_DARKMATTER_ORE)
                 .add(ModBlocks.STONE_DARKMATTER_ORE)
                 .add(ModBlocks.REFINERY);
 
-        valueLookupBuilder(BlockTags.BEACON_BASE_BLOCKS)
+        getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                 .add(ModBlocks.DIAMONDILLIUM_BLOCK)
                 .add(ModBlocks.DIAMONDIUM_BLOCK);
 
-        valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(ModBlocks.DIAMONDILLIUM_BLOCK)
                 .add(ModBlocks.DIAMONDIUM_BLOCK)
                 .add(ModBlocks.DEEPSLATE_DARKMATTER_ORE)

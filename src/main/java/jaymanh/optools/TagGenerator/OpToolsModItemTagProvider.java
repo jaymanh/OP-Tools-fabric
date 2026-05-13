@@ -13,54 +13,54 @@ import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class OpToolsModItemTagProvider extends FabricTagProvider.ItemTagProvider {
+public class OpToolsModItemTagProvider extends FabricTagProvider<Item> {
     public OpToolsModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, registriesFuture);
+        super(output, RegistryKeys.ITEM, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        valueLookupBuilder(ItemTags.SWORDS)
+        getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModTools.DIAMONDILLIUM_SWORD)
                 .add(ModTools.DIAMONDIUM_SWORD);
 
-        valueLookupBuilder(ItemTags.PICKAXES)
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ModTools.DIAMONDILLIUM_PICKAXE)
                 .add(ModTools.DIAMONDIUM_PICKAXE);
 
-        valueLookupBuilder(ItemTags.AXES)
+        getOrCreateTagBuilder(ItemTags.AXES)
                 .add(ModTools.DIAMONDILLIUM_AXE)
                 .add(ModTools.DIAMONDIUM_AXE);
 
-        valueLookupBuilder(ItemTags.HOES)
+        getOrCreateTagBuilder(ItemTags.HOES)
                 .add(ModTools.DIAMONDILLIUM_HOE)
                 .add(ModTools.DIAMONDIUM_HOE);
 
-        valueLookupBuilder(ItemTags.SHOVELS)
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
                 .add(ModTools.DIAMONDILLIUM_SHOVEL)
                 .add(ModTools.DIAMONDIUM_SHOVEL);
 
-        valueLookupBuilder(ItemTags.HEAD_ARMOR)
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
                 .add(ModArmor.DIAMONDILLIUM_HELMET)
                 .add(ModArmor.DIAMONDIUM_HELMET);
 
-        valueLookupBuilder(ItemTags.CHEST_ARMOR)
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
                 .add(ModArmor.DIAMONDILLIUM_CHESTPLATE)
                 .add(ModArmor.DIAMONDIUM_CHESTPLATE);
 
-        valueLookupBuilder(ItemTags.LEG_ARMOR)
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
                 .add(ModArmor.DIAMONDILLIUM_LEGGINGS)
                 .add(ModArmor.DIAMONDIUM_LEGGINGS);
 
-        valueLookupBuilder(ItemTags.FOOT_ARMOR)
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
                 .add(ModArmor.DIAMONDILLIUM_BOOTS)
                 .add(ModArmor.DIAMONDIUM_BOOTS);
 
-        valueLookupBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
+        getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
                 .add(ModItems.DIAMONDILLIUM_INGOT)
                 .add(ModItems.DIAMONDIUM_INGOT);
 
-        valueLookupBuilder(ItemTags.MEAT)
+        getOrCreateTagBuilder(ItemTags.MEAT)
                 .add(ModFoodItems.SUPER_MEAT);
     }
 }

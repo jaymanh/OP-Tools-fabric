@@ -15,7 +15,7 @@ public enum ToolMaterials {
     ),
     DIAMONDIUM(
             new ToolMaterial(
-                    INCORRECT_FOR_DIAMOND_TOOL, 8192, 30f, 10f, 30,
+                    INCORRECT_FOR_DIAMOND_TOOL, 8192, 40f, 10f, 30,
                     DIAMONDIUM_REPAIR_ITEMS
             )
     );

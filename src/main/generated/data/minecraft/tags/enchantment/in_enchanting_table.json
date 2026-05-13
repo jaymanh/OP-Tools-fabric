@@ -1,27 +1,7 @@
 {
   "values": [
     {
-      "id": "op-tools:auto_repair",
-      "required": false
-    },
-    {
       "id": "op-tools:auto_replant",
-      "required": false
-    },
-    {
-      "id": "op-tools:elemental_earth",
-      "required": false
-    },
-    {
-      "id": "op-tools:elemental_fire",
-      "required": false
-    },
-    {
-      "id": "op-tools:elemental_lightning",
-      "required": false
-    },
-    {
-      "id": "op-tools:elemental_water",
       "required": false
     },
     {
@@ -33,19 +13,7 @@
       "required": false
     },
     {
-      "id": "op-tools:auto_replant",
-      "required": false
-    },
-    {
-      "id": "op-tools:elemental_earth",
-      "required": false
-    },
-    {
       "id": "op-tools:elemental_fire",
-      "required": false
-    },
-    {
-      "id": "op-tools:elemental_lightning",
       "required": false
     },
     {
@@ -53,12 +21,13 @@
       "required": false
     },
     {
-      "id": "op-tools:tree_breaker",
+      "id": "op-tools:elemental_earth",
       "required": false
     },
     {
-      "id": "minecraft:mending",
+      "id": "op-tools:elemental_lightning",
       "required": false
-    }
+    },
+    "minecraft:mending"
   ]
 }
