@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ooo",
+        "o o",
+        "o o"
+    ],
+    "key": {
+        "o": {
+            "item": "op-tools:diamondillium_ingot"
+        }
+    },
+    "result": {
+        "item": "op-tools:diamondillium_leggings",
+        "count": 1
+    }
+}

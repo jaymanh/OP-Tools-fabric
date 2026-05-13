@@ -1,13 +1,9 @@
 package jaymanh.optools.Tools;
 
-
 import jaymanh.optools.Items.ModItems;
-import net.minecraft.block.Block;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
 
 public class DiamondiumToolsMaterial implements ToolMaterial {
     @Override
@@ -17,17 +13,17 @@ public class DiamondiumToolsMaterial implements ToolMaterial {
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return 40f;
+        return 30f;
     }
 
     @Override
-    public float getAttackDamage() {
+    public float getAttackDamage(){
         return 10f;
     }
 
     @Override
-    public TagKey<Block> getInverseTag() {
-        return BlockTags.INCORRECT_FOR_DIAMOND_TOOL;
+    public int getMiningLevel(){
+        return 3;
     }
 
     @Override

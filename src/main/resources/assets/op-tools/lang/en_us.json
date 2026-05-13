@@ -24,23 +24,12 @@
 
   "item.op-tools.raw_darkmatter": "Raw Darkmatter",
   "item.op-tools.refined_darkmatter": "Refined Darkmatter",
-  "item.op-tools.super_meat": "Super Meat",
-  "item.op-tools.super_fuel": "Super Fuel",
 
   "block.op-tools.diamondillium_block": "Diamondillium Block",
   "block.op-tools.diamondium_block": "Diamondium Block",
   "block.op-tools.stone_darkmatter_ore": "Darkmatter Ore",
   "block.op-tools.deepslate_darkmatter_ore": "Deepslate Darkmatter Ore",
   "block.op-tools.refinery": "Refinery",
-
-  "enchantment.op-tools.auto_replant": "Auto Replant",
-  "enchantment.op-tools.tree_breaker": "Tree Breaker",
-  "enchantment.op-tools.auto_repair": "Auto Repair",
-  "enchantment.op-tools.elemental_fire": "Fire",
-  "enchantment.op-tools.elemental_water": "Water",
-  "enchantment.op-tools.elemental_earth": "Earth",
-  "enchantment.op-tools.elemental_lightning": "Lightning",
-  "enchantment.op-tools.elemental_ice": "Ice",
 
   "itemGroup.op-tools": "OP Tools"
 }

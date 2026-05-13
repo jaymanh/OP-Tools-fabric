@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import static jaymanh.optools.OpTools.MOD_ID;
 
 public class RefineryScreen extends HandledScreen<RefineryScreenHandler> {
-    private static final Identifier TEXTURE = Identifier.of(MOD_ID, "textures/gui/refinery_gui.png");
+    private static final Identifier TEXTURE = new Identifier(MOD_ID, "textures/gui/refinery_gui.png");
 
     public RefineryScreen(RefineryScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);

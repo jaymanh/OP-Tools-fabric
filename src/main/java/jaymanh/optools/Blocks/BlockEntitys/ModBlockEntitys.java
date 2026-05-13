@@ -11,7 +11,7 @@ import static jaymanh.optools.OpTools.MOD_ID;
 
 public class ModBlockEntitys {
     public static final BlockEntityType<RefineryBlockEntity> REFINERY_BLOCK_ENTITY =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MOD_ID, "refinery"),
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, "refinery"),
                     FabricBlockEntityTypeBuilder.create(RefineryBlockEntity::new, ModBlocks.REFINERY).build());
 
     public static void initialise(){

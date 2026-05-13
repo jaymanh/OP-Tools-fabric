@@ -1,41 +1,34 @@
 package jaymanh.optools.Blocks.BlockEntitys;
 
 import jaymanh.optools.GUI.ImplementedInventory;
-import jaymanh.optools.GUI.Screen.BlockPosPayload;
 import jaymanh.optools.GUI.Screen.RefineryScreenHandler;
 import jaymanh.optools.Items.ModItems;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.LockableContainerBlockEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-
-public class RefineryBlockEntity extends LockableContainerBlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory, SidedInventory {
+public class RefineryBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
 
 
     private final  DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
-    private static final int[] TOP_SLOTS = new int[]{0};
-    private static final int[] BOTTOM_SLOTS = new int[]{1, 1};
-    private static final int[] SIDE_SLOTS = new int[]{0};
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -68,26 +61,40 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
         };
     }
 
+    public ItemStack getRenderStack() {
+        if(this.getStack(OUTPUT_SLOT).isEmpty()) {
+            return this.getStack(INPUT_SLOT);
+        } else {
+            return this.getStack(OUTPUT_SLOT);
+        }
+    }
+
     @Override
     public void markDirty() {
-        assert world != null;
         world.updateListeners(pos, getCachedState(), getCachedState(), 3);
         super.markDirty();
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
-        super.writeNbt(nbt, wrapper);
-        Inventories.writeNbt(nbt, inventory, wrapper);
+    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+        buf.writeBlockPos(this.pos);
+    }
+
+
+    @Override
+    protected void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        Inventories.writeNbt(nbt, inventory);
         nbt.putInt("refinery.progress", progress);
     }
 
     @Override
-    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
-        super.readNbt(nbt, wrapper);
-        Inventories.readNbt(nbt, inventory, wrapper);
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        Inventories.readNbt(nbt, inventory);
         progress = nbt.getInt("refinery.progress");
     }
+
 
     @Override
     public DefaultedList<ItemStack> getItems() {
@@ -99,35 +106,17 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
         return Text.translatable("block.op-tools.refinery");
     }
 
-    @Override
-    protected Text getContainerName() {
-        return this.getDisplayName();
-    }
-
-    @Override
-    protected DefaultedList<ItemStack> getHeldStacks() {
-        return this.inventory;
-    }
-
-    @Override
-    protected void setHeldStacks(DefaultedList<ItemStack> inventory) {
-
-    }
-
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new RefineryScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
-    @Override
-    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return null;
-    }
 
     private void resetProgress() {
         this.progress = 0;
     }
+
 
     public void tick(World world, BlockPos pos, BlockState state) {
         if(world.isClient()){
@@ -153,13 +142,6 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
         }
     }
 
-    public int[] getAvailableSlots(Direction side) {
-        if (side == Direction.DOWN) {
-            return BOTTOM_SLOTS;
-        } else {
-            return side == Direction.UP ? TOP_SLOTS : SIDE_SLOTS;
-        }
-    }
 
     private void craftItem() {
         this.removeStack(INPUT_SLOT, 1);
@@ -195,8 +177,4 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
     }
 
-    @Override
-    public BlockPosPayload getScreenOpeningData(ServerPlayerEntity player) {
-        return new BlockPosPayload(this.pos);
-    }
 }

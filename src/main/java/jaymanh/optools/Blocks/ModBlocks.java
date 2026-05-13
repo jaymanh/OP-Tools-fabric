@@ -16,7 +16,7 @@ import static jaymanh.optools.Tools.ModTools.OP_TOOLS_ITEM_GROUP_KEY;
 
 public class ModBlocks {
     public static Block register(Block block, String name, boolean shouldRegisterItem){
-        Identifier id = Identifier.of(MOD_ID, name);
+        Identifier id = new Identifier(MOD_ID, name);
 
         if(shouldRegisterItem){
             BlockItem blockItem = new BlockItem(block, new Item.Settings());

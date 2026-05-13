@@ -10,8 +10,8 @@ import static jaymanh.optools.OpTools.MOD_ID;
 
 public class ModScreenHandlers {
     public static final ScreenHandlerType<RefineryScreenHandler> REFINERY_SCREEN_HANDLER =
-            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(MOD_ID, "refinery"),
-            new ExtendedScreenHandlerType<>(RefineryScreenHandler::new, BlockPosPayload.PACKET_CODEC));
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(MOD_ID, "refinery"),
+            new ExtendedScreenHandlerType<>(RefineryScreenHandler::new));
 
     public static void registerScreenHandlers(){
 

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ooo",
+        "o o"
+    ],
+    "key": {
+        "o": {
+            "item": "op-tools:diamondillium_ingot"
+        }
+    },
+    "result": {
+        "item": "op-tools:diamondillium_helmet",
+        "count": 1
+    }
+}

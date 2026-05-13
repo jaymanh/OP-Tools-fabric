@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "o o",
+        "o o"
+    ],
+    "key": {
+        "o": {
+            "item": "op-tools:diamondium_ingot"
+        }
+    },
+    "result": {
+        "item": "op-tools:diamondium_boots",
+        "count": 1
+    }
+}

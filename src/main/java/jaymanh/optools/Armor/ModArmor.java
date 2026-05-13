@@ -1,5 +1,6 @@
 package jaymanh.optools.Armor;
 
+import jaymanh.optools.Tools.ModTools;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
@@ -10,17 +11,39 @@ import static jaymanh.optools.Tools.ModTools.register;
 
 public class ModArmor {
 
-    public static final Item DIAMONDIUM_HELMET = register(new ArmorItem(ModArmorMaterials.DIAMONDIUM, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(ModArmorMaterials.DIAMONDIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.EPIC)), "diamondium_helmet");
-    public static final Item DIAMONDIUM_CHESTPLATE = register(new ArmorItem(ModArmorMaterials.DIAMONDIUM, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(ModArmorMaterials.DIAMONDIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.EPIC)), "diamondium_chestplate");
-    public static final Item DIAMONDIUM_LEGGINGS = register(new ArmorItem(ModArmorMaterials.DIAMONDIUM, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(ModArmorMaterials.DIAMONDIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.EPIC)), "diamondium_leggings");
-    public static final Item DIAMONDIUM_BOOTS = register(new ArmorItem(ModArmorMaterials.DIAMONDIUM, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(ModArmorMaterials.DIAMONDIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.EPIC)), "diamondium_boots");
+    public static final Item DIAMONDIUM_HELMET = register(
+            new ArmorItem(DiamondiumArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_helmet"
+    );
+    public static final Item DIAMONDIUM_CHESTPLATE = register(
+            new ArmorItem(DiamondiumArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_chestplate"
+    );
+    public static final Item DIAMONDIUM_LEGGINGS = register(
+            new ArmorItem(DiamondiumArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_leggings"
+    );
+    public static final Item DIAMONDIUM_BOOTS = register(
+            new ArmorItem(DiamondiumArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new Item.Settings().rarity(Rarity.EPIC).fireproof()),
+            "diamondium_boots"
+    );
 
-
-    public static final Item DIAMONDILLIUM_HELMET = register(new ArmorItem(ModArmorMaterials.DIAMONDILLIUM, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(ModArmorMaterials.DIAMONDILLIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.RARE)), "diamondillium_helmet");
-    public static final Item DIAMONDILLIUM_CHESTPLATE = register(new ArmorItem(ModArmorMaterials.DIAMONDILLIUM, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(ModArmorMaterials.DIAMONDILLIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.RARE)), "diamondillium_chestplate");
-    public static final Item DIAMONDILLIUM_LEGGINGS = register(new ArmorItem(ModArmorMaterials.DIAMONDILLIUM, ArmorItem.Type.LEGGINGS, new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(ModArmorMaterials.DIAMONDILLIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.RARE)), "diamondillium_leggings");
-    public static final Item DIAMONDILLIUM_BOOTS = register(new ArmorItem(ModArmorMaterials.DIAMONDILLIUM, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(ModArmorMaterials.DIAMONDILLIUM_DURABILITY_MULTIPLIER)).fireproof().rarity(Rarity.RARE)), "diamondillium_boots");
-
+    public static final Item DIAMONDILLIUM_HELMET = register(
+            new ArmorItem(DiamondilliumArmorMaterial.INSTANCE, ArmorItem.Type.HELMET, new Item.Settings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_helmet"
+    );
+    public static final Item DIAMONDILLIUM_CHESTPLATE = register(
+            new ArmorItem(DiamondilliumArmorMaterial.INSTANCE, ArmorItem.Type.CHESTPLATE, new Item.Settings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_chestplate"
+    );
+    public static final Item DIAMONDILLIUM_LEGGINGS = register(
+            new ArmorItem(DiamondilliumArmorMaterial.INSTANCE, ArmorItem.Type.LEGGINGS, new Item.Settings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_leggings"
+    );
+    public static final Item DIAMONDILLIUM_BOOTS = register(
+            new ArmorItem(DiamondilliumArmorMaterial.INSTANCE, ArmorItem.Type.BOOTS, new Item.Settings().rarity(Rarity.RARE).fireproof()),
+            "diamondillium_boots"
+    );
 
     public static void initialise(){
 

@@ -9,8 +9,8 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -32,13 +32,6 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
         return new RefineryBlockEntity(pos, state);
     }
 
-    protected boolean hasComparatorOutput(BlockState state) {
-        return true;
-    }
-    protected int getComparatorOutput(BlockState state, World world, BlockPos pos) {
-        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
-    }
-
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
@@ -56,7 +49,8 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
         }
     }
 
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient){
             NamedScreenHandlerFactory screenHandlerFactory = ((RefineryBlockEntity) world.getBlockEntity(pos));
 
@@ -67,7 +61,6 @@ public class RefineryBlock extends BlockWithEntity implements BlockEntityProvide
 
         return ActionResult.SUCCESS;
     }
-
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
