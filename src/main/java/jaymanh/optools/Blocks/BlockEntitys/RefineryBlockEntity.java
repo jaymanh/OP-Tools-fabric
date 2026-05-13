@@ -86,7 +86,7 @@ public class RefineryBlockEntity extends LockableContainerBlockEntity implements
     public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup wrapper) {
         super.readNbt(nbt, wrapper);
         Inventories.readNbt(nbt, inventory, wrapper);
-        progress = nbt.getInt("refinery.progress",0);
+        progress = nbt.getInt("refinery.progress");
     }
 
     @Override
